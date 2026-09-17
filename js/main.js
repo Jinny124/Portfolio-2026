@@ -14,6 +14,8 @@ import {
   TiltedCard,
 } from './reactbits/index.js';
 
+import { onceInView } from './reactbits/utils.js';
+import Lightbox from './lightbox.js';
 import ParticleNetwork from './particle-network.js';
 import { currentPalette, restoreTheme, setupThemeToggle } from './theme.js';
 
@@ -35,8 +37,8 @@ const heroNetwork = ParticleNetwork(document.getElementById('hero-canvas'), {
 
 /* ---------------- SplitText + GradientText: judul hero ---------------- */
 
-/** Indeks kata pada judul hero yang diberi gradien: "sistem" dan "web". */
-const GRADIENT_WORDS = [1, 5];
+/** Indeks kata pada judul hero yang diberi gradien: "Eugenia" dan "Hibau". */
+const GRADIENT_WORDS = [0, 2];
 
 const heroHeading = SplitText(document.getElementById('hero-heading'), {
   splitType: 'words',
@@ -87,11 +89,19 @@ for (const el of document.querySelectorAll('[data-animated-content]')) {
     ease: 'power3.out',
     threshold: 0.15,
     delay: Number.parseFloat(el.dataset.acDelay ?? '0'),
-    onComplete() {
-      // Bar keahlian baru diisi setelah kartunya benar-benar terlihat.
-      const bar = el.querySelector('.skill-bar-fill');
-      if (bar) bar.style.width = `${bar.dataset.level}%`;
-    },
+  });
+}
+
+/* ---------------- bar keahlian ---------------- */
+
+// Tiap bar punya pemicunya sendiri, tidak menumpang callback penyelesaian
+// AnimatedContent. Peristiwa selesai animasi tidak selalu terkirim -- di tab
+// latar, misalnya -- dan kalau bar bergantung padanya, isinya tidak pernah
+// terisi meski kartunya sudah terlihat. Pengisian lebarnya sendiri dianimasikan
+// oleh transition di css/sections.css.
+for (const bar of document.querySelectorAll('.skill-bar-fill')) {
+  onceInView(bar, 0.15, '0px', () => {
+    bar.style.width = `${bar.dataset.level}%`;
   });
 }
 
@@ -119,6 +129,10 @@ for (const el of document.querySelectorAll('[data-tilt]')) {
     showTooltip: Boolean(el.dataset.caption),
   });
 }
+
+/* ---------------- pratinjau sertifikat ---------------- */
+
+Lightbox('.cert-thumb');
 
 /* ---------------- sorot latar mengikuti kursor ---------------- */
 

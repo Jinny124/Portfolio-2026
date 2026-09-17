@@ -1,5 +1,5 @@
 /* ============================================================
-   Isi tiap section: Tentang, Keahlian, Proyek, Kontak.
+   Isi tiap section: Tentang, Keahlian, Proyek, Sertifikat, Kontak.
    ============================================================ */
 
 /* ---------------- Tentang ---------------- */
@@ -166,7 +166,7 @@
   background: var(--surface-2);
 }
 
-/* lebar diisi js/main.js saat kartu masuk viewport */
+/* lebar diisi js/main.js saat bar ini masuk viewport */
 .skill-bar-fill {
   width: 0;
   height: 100%;
@@ -246,7 +246,8 @@
   color: var(--text-muted);
 }
 
-.project-link {
+.project-link,
+.cert-link {
   position: relative;
   z-index: 1;
   display: inline-flex;
@@ -260,14 +261,124 @@
   text-decoration: none;
 }
 
-.project-link:hover {
+.project-link:hover,
+.cert-link:hover {
   text-decoration: underline;
 }
 
-.project-note {
-  margin-top: 34px;
+/* ---------------- Sertifikat ---------------- */
+
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+/* skin di atas .card-spotlight milik React Bits */
+.cert-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 24px;
+}
+
+.cert-card:hover {
+  border-color: color-mix(in srgb, var(--accent-2) 45%, var(--border));
+  box-shadow: var(--shadow);
+}
+
+/* Pratinjau gambar sertifikat. object-fit: contain dipakai, bukan cover,
+   supaya seluruh muka sertifikat terlihat dan tidak ada tepi yang terpotong. */
+.cert-thumb {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  margin-bottom: 18px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-s);
+  background: var(--surface-2);
+  cursor: zoom-in;
+}
+
+.cert-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.cert-card:hover .cert-thumb img {
+  transform: scale(1.04);
+}
+
+/* Petunjuk bahwa gambar bisa diklik. Kursor zoom-in saja tidak cukup:
+   di layar sentuh tidak ada kursor sama sekali. */
+.cert-thumb::after {
+  content: 'Perbesar';
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 5px 11px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   font-family: var(--font-mono);
-  font-size: 12.5px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.cert-thumb:hover::after,
+.cert-thumb:focus-visible::after {
+  opacity: 1;
+}
+
+/* Tanpa hover, petunjuknya ditampilkan terus. */
+@media (hover: none) {
+  .cert-thumb::after {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cert-thumb::after {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cert-thumb img {
+    transition: none;
+  }
+  .cert-card:hover .cert-thumb img {
+    transform: none;
+  }
+}
+
+.cert-title {
+  position: relative;
+  z-index: 1;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.cert-date {
+  position: relative;
+  z-index: 1;
+  margin: 6px 0 0;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
   color: var(--text-dim);
 }
 
@@ -300,47 +411,128 @@
   color: var(--text-muted);
 }
 
-.prompt-box {
-  display: inline-block;
-  margin-top: 22px;
-  padding: 16px 18px;
+/* Melanjutkan gaya "$ kontak --email" yang sebelumnya statis di .prompt-box;
+   sekarang jadi tiga baris yang bisa diklik. */
+.term-box {
+  overflow: hidden;
   border: 1px solid var(--border);
   border-radius: var(--radius-s);
   background: var(--bg);
-  font-family: var(--font-mono);
-  font-size: 14px;
-  color: var(--code);
 }
 
-.prompt-box .prompt {
-  margin-right: 8px;
+.term-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.term-row:last-child {
+  border-bottom: none;
+}
+
+.term-row:hover,
+.term-row:focus-visible {
+  background: var(--surface);
   color: var(--accent-2);
 }
 
-.prompt-box .cursor {
-  display: inline-block;
-  width: 8px;
+.term-row svg {
+  width: 15px;
   height: 15px;
-  margin-left: 4px;
-  vertical-align: -2px;
-  background: var(--accent-2);
-  animation: blink 1.1s step-end infinite;
+  flex-shrink: 0;
+  color: var(--accent-2);
 }
 
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
+.term-row .field {
+  min-width: 62px;
+  color: var(--text-dim);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .prompt-box .cursor {
-    animation: none;
-  }
+.term-row .value {
+  color: var(--code);
 }
 
-.social-row {
+.term-row:hover .value,
+.term-row:focus-visible .value {
+  color: var(--accent-2);
+}
+
+.term-row .arrow {
+  margin-left: auto;
+  color: var(--accent-2);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.term-row:hover .arrow,
+.term-row:focus-visible .arrow {
+  opacity: 1;
+}
+
+/* ---------------- lightbox sertifikat ---------------- */
+
+.lightbox {
+  width: min(94vw, 1400px);
+  max-width: none;
+  max-height: 92vh;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  background: var(--bg-elevated);
+  color: var(--text);
+  overflow: hidden;
+}
+
+.lightbox::backdrop {
+  background: rgba(4, 6, 16, 0.82);
+  backdrop-filter: blur(4px);
+}
+
+.lightbox img {
+  display: block;
+  width: 100%;
+  max-height: calc(92vh - 64px);
+  object-fit: contain;
+  background: var(--surface-2);
+}
+
+.lightbox-bar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--border);
+}
+
+.lightbox-title {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+.lightbox-close {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.lightbox-close:hover {
+  border-color: var(--accent-2);
+  color: var(--accent-2);
 }

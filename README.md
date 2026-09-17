@@ -46,16 +46,19 @@ npx serve .
 ```
 MyPorto2026/
 ├── index.html              # markup halaman
+├── assets/
+│   └── sertifikat/         # gambar sertifikat, sisi panjang maks 1400 px
 ├── css/
 │   ├── tokens.css          # variabel warna, radius, font (gelap & terang)
 │   ├── base.css            # reset, tipografi dasar, .container
 │   ├── reactbits.css       # CSS komponen React Bits
 │   ├── layout.css          # latar, navigasi, tombol, hero, footer
-│   └── sections.css        # Tentang, Keahlian, Proyek, Kontak
+│   └── sections.css        # Tentang, Keahlian, Proyek, Sertifikat, Kontak
 └── js/
     ├── main.js             # memasang komponen ke elemen di index.html
     ├── theme.js            # tema gelap/terang + palet warna
     ├── particle-network.js # latar hero: titik + garis penghubung (Three.js)
+    ├── lightbox.js         # pratinjau sertifikat ukuran penuh (<dialog>)
     └── reactbits/
         ├── index.js        # titik ekspor semua komponen
         ├── utils.js        # easing, keyframe, pegas, ticker bersama
@@ -143,8 +146,8 @@ ikut berganti saat tema diubah.
 
 Sebagian besar perubahan cukup dilakukan di `index.html`.
 
-**Menambah kartu keahlian atau proyek** — salin satu blok kartu yang sudah
-ada. Atribut `data-*` yang menyalakan komponen:
+**Menambah kartu keahlian, proyek, atau sertifikat** — salin satu blok kartu
+yang sudah ada. Atribut `data-*` yang menyalakan komponen:
 
 | Atribut | Efek |
 | --- | --- |
@@ -155,6 +158,37 @@ ada. Atribut `data-*` yang menyalakan komponen:
 | `data-tilt` | kartu miring 3D saat hover |
 | `data-caption="Teks"` | tooltip yang mengikuti kursor |
 | `data-level="72"` | persentase bar keahlian |
+
+**Mengisi sertifikat** — tiap kartu di section `#sertifikat` punya tiga bagian.
+Kartunya sengaja ringkas: gambar, judul, dan bulan-tahun terbit.
+
+| Class | Isi |
+| --- | --- |
+| `.cert-thumb` | tombol pratinjau; `data-full` menunjuk berkas gambar, `data-title` jadi keterangan di lightbox |
+| `.cert-title` | nama sertifikat |
+| `.cert-date` | bulan dan tahun terbit |
+
+Kartu diurutkan manual dari tahun terbaru ke terlama; menambah kartu baru
+berarti menaruhnya di posisi yang sesuai urutan tahun, bukan di akhir daftar.
+
+Gambarnya disimpan di `assets/sertifikat/`. Sebelum ditaruh di sana, ubah
+ukurannya dulu sampai sisi panjang maksimal 1400 piksel dan simpan sebagai
+JPEG kualitas sekitar 80. Berkas asli dari penerbit sering berukuran
+beberapa megabita dan akan membuat halaman berat.
+
+Mengklik pratinjau membuka `js/lightbox.js`, yang memakai elemen `<dialog>`
+bawaan browser. Penutupan dengan Esc, jebakan fokus, dan pengembalian fokus
+ke tombol pemicu ditangani browser, bukan kode sendiri.
+
+Tautan verifikasi bersifat opsional. Kalau penerbitnya menyediakan halaman
+verifikasi, tambahkan satu baris di dalam `<article>`:
+
+```html
+<a class="cert-link" href="https://...">Lihat kredensial &rarr;</a>
+```
+
+Menambah kartu cukup dengan menyalin satu blok `<article>`; tidak ada yang
+perlu disentuh di berkas JavaScript.
 
 **Mengubah warna** — semua nilai ada di `css/tokens.css`. Kalau warna aksen
 diubah, samakan juga daftar warna di `PALETTES` pada `js/theme.js`, karena
@@ -169,5 +203,5 @@ nol) supaya kata yang diberi gradien tetap pas.
 ## Yang masih perlu diisi
 
 - Tautan detail di tiga kartu proyek masih `href="#"`.
-- Tombol Email, GitHub, dan LinkedIn di bagian Kontak masih `href="#"`.
 - Isi proyek masih contoh; ganti dengan studi kasus asli.
+- Belum ada tautan verifikasi di kartu sertifikat.
