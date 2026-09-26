@@ -47,7 +47,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-radius: 1.25rem;
+  border-radius: 20px;
   font-weight: 500;
   backdrop-filter: blur(10px);
   transition: box-shadow 0.5s ease-out;
@@ -68,7 +68,7 @@
 }
 
 .animated-gradient-text.with-border {
-  padding: 0.35rem 0.75rem;
+  padding: 5.6px 12px;
 }
 
 .gradient-overlay {
@@ -106,8 +106,8 @@
 .card-spotlight {
   position: relative;
   overflow: hidden;
-  padding: 2rem;
-  /* Asli: border-radius 1.5rem, background #111, border #222. */
+  padding: 32px;
+  /* Asli: border-radius 24px, background #111, border #222. */
   border-radius: var(--radius-m);
   border: 1px solid var(--border);
   background: var(--bg-elevated);

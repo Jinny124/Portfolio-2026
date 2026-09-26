@@ -119,7 +119,7 @@ header.nav {
   font-family: var(--font-display);
   font-size: 17px;
   font-weight: 800;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.17px; /* 0.01em pada 17px */
   color: var(--text);
   text-decoration: none;
 }
@@ -235,25 +235,52 @@ nav.links a:hover {
 
 /* ---------------- hero ---------------- */
 
+/* Tinggi navigasi (80px) dikurangi dari 100dvh, supaya hero mengisi
+   persis sisa layar dan section berikutnya tidak ikut terlihat sebelum
+   di-scroll. dvh dipakai, bukan vh, supaya di HP tidak terpotong bilah
+   alamat browser yang naik-turun. */
 .hero {
   position: relative;
   overflow: hidden;
+  min-height: calc(100dvh - 80px);
+  display: flex;
+  flex-direction: column;
+  /* align-items sengaja dibiarkan bawaan (stretch): .hero-inner memakai
+     class .container, yang punya max-width dan margin:auto sendiri.
+     Stretch pada arah silang (horizontal) tidak merusak itu — hasilnya
+     tetap kolom 1360px yang sejajar dengan navigasi di atasnya. Kalau
+     dipaksa align-items:center, .hero-inner malah melebar penuh layar
+     dan pusatnya bergeser dari kolom konten. */
+  justify-content: center;
   padding: clamp(40px, 5vw, 64px) 0 clamp(32px, 4vw, 48px);
 }
 
+/* Urutan hero: posisi, nama, subheadline, tombol — semua rata tengah. */
 .hero-inner {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* posisi, ditulis mono di atas nama */
+.hero-roles {
+  font-family: var(--font-mono);
+  font-size: clamp(16px, 1.5vw, 18px);
+  color: var(--text-muted);
 }
 
 /* Nama dalam satu baris. Di Syne 800, "Eugenia Laellisa Hibau" selebar
    ±17,5 kali ukuran fontnya. Lebar kolom konten ±(lebar layar - 64px),
    maksimal 1296px, jadi:
    - 5.2vw menjaga nama tetap muat di kolom pada lebar layar berapa pun;
-   - 4.5rem (72px) batas atas, karena 72 x 17,5 = 1260px < 1296px.
+   - 72px batas atas, karena 72 x 17,5 = 1260px < 1296px.
    Kalau namanya diganti, hitung ulang angka ini. */
 .hero h1 {
-  font-size: clamp(2rem, 5.2vw, 4.5rem);
+  margin-top: 14px;
+  font-size: clamp(32px, 5.2vw, 72px);
   font-weight: 800;
   line-height: 0.98;
   letter-spacing: -0.02em;
@@ -264,29 +291,22 @@ nav.links a:hover {
    turun baris dengan ukuran yang tetap tampil sebagai judul. */
 @media (max-width: 640px) {
   .hero h1 {
-    font-size: 2.4rem;
+    font-size: 38.4px;
     white-space: normal;
   }
 }
 
-/* peran, ditulis mono di bawah nama */
-.hero-roles {
-  margin-top: 18px;
-  font-family: var(--font-mono);
-  font-size: clamp(0.85rem, 1.3vw, 0.95rem);
-  color: var(--text-muted);
-}
-
 .hero p.sub {
-  margin-top: 18px;
-  max-width: 52ch;
-  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  margin: 18px 0 0;
+  max-width: 739px; /* ~64ch pada Karla ±19-22px, ukuran hero p.sub */
+  font-size: clamp(18.4px, 1.9vw, 22px);
   color: var(--text-muted);
 }
 
 .hero-cta {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 14px;
   margin-top: 36px;
 }
@@ -301,24 +321,24 @@ section {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  max-width: 60ch;
+  max-width: 570px; /* ~60ch pada Karla 16px */
   margin-bottom: clamp(36px, 5vw, 56px);
 }
 
 .kicker {
   font-family: var(--font-mono);
   font-size: 12.5px;
-  letter-spacing: 0.14em;
+  letter-spacing: 1.75px; /* 0.14em pada 12.5px */
   text-transform: uppercase;
   color: var(--text-dim);
 }
 
 .section-head h2 {
-  font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+  font-size: clamp(27.2px, 3.4vw, 36.8px);
 }
 
 .section-head p {
-  font-size: 1.02rem;
+  font-size: 16.32px;
   color: var(--text-muted);
 }
 
