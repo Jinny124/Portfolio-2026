@@ -286,18 +286,27 @@
   gap: 22px;
 }
 
-/* Baris kepala section Sertifikat: judul di kiri, tautan "See all" di
-   kanan, sejajar di baris yang sama alih-alih tombol di bawah grid. */
+/* Baris kepala section Sertifikat/Projects: judul di kiri, tautan "See
+   all" di pojok kanan (baris ini sendiri tidak dibatasi max-width, beda
+   dari .section-head, supaya tautannya sampai ke tepi kanan container),
+   sejajar dengan kicker+h2, bukan dengan paragraf di bawahnya. */
 .section-head-row {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 24px;
-  margin-bottom: clamp(36px, 5vw, 56px);
+  gap: 18px;
+  margin-bottom: 14px;
 }
 
 .section-head-row .section-head {
   margin-bottom: 0;
+}
+
+.section-lede {
+  max-width: 570px; /* ~60ch pada Karla 16px, sama seperti .section-head */
+  margin-bottom: clamp(36px, 5vw, 56px);
+  font-size: 16.32px;
+  color: var(--text-muted);
 }
 
 .section-see-all {

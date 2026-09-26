@@ -150,7 +150,7 @@
                   <div class="terminal-body">
                     <div class="line"><span class="prompt">$</span> whoami</div>
                     <p>
-                      I'm an Informatics Engineering graduate from BINUS University
+                      I'm a Computer Science graduate from BINUS University
                       (GPA 3.59/4.00) who enjoys the part of software most people skip:
                       checking that it actually works.
                     </p>
@@ -304,12 +304,18 @@
         <!-- ============ Proyek ============ -->
         <section id="proyek">
           <div class="container">
-            <div class="section-head" data-animated-content>
-              <div class="kicker">Projects</div>
-              <h2>Beberapa hal yang sedang &amp; pernah saya kerjakan</h2>
-              <p>
-                Contoh proyek di bawah ini &mdash; ganti dengan studi kasus dan tautan
-                proyek Anda sendiri.
+            <div data-animated-content>
+              <div class="section-head-row">
+                <div class="section-head">
+                  <div class="kicker">Projects</div>
+                  <h2>Selected projects</h2>
+                </div>
+
+                <a class="section-see-all" href="projects.html">See all &rarr;</a>
+              </div>
+              <p class="section-lede">
+                A selection of work I've analyzed, tested, and built, from
+                system requirements to research.
               </p>
             </div>
 
@@ -319,67 +325,87 @@
             <div class="projects-grid">
               <a
                 class="card-spotlight project-card"
-                href="projects/jinot-bakehouse.html"
+                href="#"
                 data-animated-content
                 data-spotlight="accent"
                 data-tilt
-                data-caption="Jinot Bakehouse"
+                data-caption="SplitBill App"
               >
                 <div class="project-tags">
-                  <span class="pill featured">Analisis Sistem</span>
-                  <span class="pill">Web App</span>
-                  <span class="pill">Inventori</span>
-                </div>
-                <h3>Jinot Bakehouse &mdash; Sistem Manajemen Stok &amp; Pesanan</h3>
-                <p class="desc">
-                  Aplikasi untuk mencatat stok bahan baku, mengelola pesanan kue, dan
-                  merangkum laporan penjualan Jinot Bakehouse dalam satu dashboard.
-                </p>
-                <span class="project-link">Lihat detail &rarr;</span>
-              </a>
-
-              <a
-                class="card-spotlight project-card"
-                href="projects/portal-klien.html"
-                data-animated-content
-                data-ac-delay="0.08"
-                data-spotlight="accent"
-                data-tilt
-                data-caption="Portal Klien"
-              >
-                <div class="project-tags">
-                  <span class="pill">UI/UX</span>
-                  <span class="pill">Front-End</span>
-                  <span class="pill">Dashboard</span>
-                </div>
-                <h3>Redesain Dashboard Portal Klien</h3>
-                <p class="desc">
-                  Merancang ulang tampilan dashboard agar klien lebih mudah melacak
-                  status pesanan dan riwayat transaksi secara real-time.
-                </p>
-                <span class="project-link">Lihat detail &rarr;</span>
-              </a>
-
-              <a
-                class="card-spotlight project-card"
-                href="projects/qa-checkout.html"
-                data-animated-content
-                data-ac-delay="0.16"
-                data-spotlight="accent"
-                data-tilt
-                data-caption="QA Checkout"
-              >
-                <div class="project-tags">
+                  <span class="pill featured">System Analysis</span>
                   <span class="pill">QA</span>
-                  <span class="pill">Test Case</span>
-                  <span class="pill">Regresi</span>
+                  <span class="pill">Frontend</span>
                 </div>
-                <h3>Rangkaian Pengujian Checkout &amp; Pembayaran</h3>
+                <h3>SplitBill App</h3>
                 <p class="desc">
-                  Menyusun skenario pengujian dan checklist QA untuk alur checkout agar
-                  setiap rilis lebih stabil dan minim regresi.
+                  A bill-splitting app for Android, iOS, and Web. I wrote 17
+                  use cases and 6 user flows, designed the UI in Figma, and
+                  manually tested the split calculations.
                 </p>
-                <span class="project-link">Lihat detail &rarr;</span>
+                <span class="project-link">View case study &rarr;</span>
+              </a>
+
+              <a
+                class="card-spotlight project-card"
+                href="#"
+                data-animated-content
+                data-ac-delay="0.06"
+                data-spotlight="accent"
+                data-tilt
+                data-caption="Analysis System Design"
+              >
+                <div class="project-tags">
+                  <span class="pill">System Analysis</span>
+                </div>
+                <h3>Analysis System Design</h3>
+                <p class="desc">
+                  A full analysis package: questionnaire, 8 user stories, 22
+                  technical tasks, 11 use cases, sequence &amp; class diagrams,
+                  and 11 prototype screens.
+                </p>
+                <span class="project-link">View document &rarr;</span>
+              </a>
+
+              <a
+                class="card-spotlight project-card"
+                href="#"
+                data-animated-content
+                data-ac-delay="0.12"
+                data-spotlight="accent"
+                data-tilt
+                data-caption="Thesis"
+              >
+                <div class="project-tags">
+                  <span class="pill">Research</span>
+                  <span class="pill">Data</span>
+                </div>
+                <h3>Breast Cancer Drug Sensitivity Prediction (Thesis)</h3>
+                <p class="desc">
+                  Undergraduate thesis predicting drug sensitivity using
+                  miRNA-derived graph representations and Graph Neural
+                  Networks.
+                </p>
+                <span class="project-link">Read paper &rarr;</span>
+              </a>
+
+              <a
+                class="card-spotlight project-card"
+                href="#"
+                data-animated-content
+                data-ac-delay="0.18"
+                data-spotlight="accent"
+                data-tilt
+                data-caption="PT Kriya Nusantara Sejahtera"
+              >
+                <div class="project-tags">
+                  <span class="pill">Web Development</span>
+                </div>
+                <h3>PT Kriya Nusantara Sejahtera</h3>
+                <p class="desc">
+                  Company profile website for a furniture, interior, and
+                  custom fabrication business.
+                </p>
+                <span class="project-link">Visit site &rarr;</span>
               </a>
             </div>
           </div>
@@ -388,17 +414,19 @@
         <!-- ============ Sertifikat ============ -->
         <section id="sertifikat">
           <div class="container">
-            <div class="section-head-row" data-animated-content>
-              <div class="section-head">
-                <div class="kicker">Certifications</div>
-                <h2>Certifications &amp; training</h2>
-                <p>
-                  Courses I've completed to sharpen my analysis, data, and
-                  development skills.
-                </p>
-              </div>
+            <div data-animated-content>
+              <div class="section-head-row">
+                <div class="section-head">
+                  <div class="kicker">Certifications</div>
+                  <h2>Certifications &amp; training</h2>
+                </div>
 
-              <a class="section-see-all" href="certificates.html">See all &rarr;</a>
+                <a class="section-see-all" href="certificates.html">See all &rarr;</a>
+              </div>
+              <p class="section-lede">
+                Courses I've completed to sharpen my analysis, data, and
+                development skills.
+              </p>
             </div>
 
             <!-- Kerangka kosong. Isi tiap kartu dengan sertifikat asli:

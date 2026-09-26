@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Semua proyek Eugenia Laellisa Hibau."
+    />
+    <title>All Projects — Eugenia Laellisa Hibau</title>
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Karla:wght@400;500;600;700&family=Fragment+Mono&display=swap"
+    />
+
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/reactbits.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/sections.css" />
+    <link rel="stylesheet" href="css/project-detail.css" />
+
+    <script type="module" src="js/projects.js"></script>
+  </head>
+
+  <body>
+    <div class="bg-fx" aria-hidden="true">
+      <div class="bg-grid"></div>
+      <div class="bg-blob b1"></div>
+      <div class="bg-blob b2"></div>
+    </div>
+
+    <div class="page">
+      <header class="nav">
+        <div class="nav-row">
+          <a href="index.html#top" class="logo">eugenia<span>.</span></a>
+
+          <nav class="links">
+            <a href="index.html#tentang">Tentang</a>
+            <a href="index.html#keahlian">Keahlian</a>
+            <a href="index.html#proyek">Projects</a>
+            <a href="index.html#sertifikat">Sertifikat</a>
+            <a href="index.html#kontak">Kontak</a>
+          </nav>
+
+          <div class="nav-cta">
+            <button
+              type="button"
+              class="theme-toggle"
+              id="theme-toggle"
+              aria-label="Ganti tema terang/gelap"
+            >
+              <svg
+                class="icon-sun"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="4"></circle>
+                <path
+                  d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                ></path>
+              </svg>
+              <svg
+                class="icon-moon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+              </svg>
+            </button>
+
+            <a class="btn btn-primary" href="index.html#kontak">Hubungi Saya</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="pd-hero">
+          <div class="container">
+            <a class="pd-back" href="index.html#proyek">&larr; Back to home</a>
+
+            <div class="project-tags">
+              <span class="pill">Projects</span>
+            </div>
+
+            <h1 data-animated-content>All Projects</h1>
+            <p class="pd-summary" data-animated-content>
+              A selection of work I've analyzed, tested, and built, from
+              system requirements to research.
+            </p>
+          </div>
+        </section>
+
+        <section class="pd-body">
+          <div class="container">
+            <div class="projects-grid">
+              <a
+                class="card-spotlight project-card"
+                href="#"
+                data-animated-content
+                data-spotlight="accent"
+                data-tilt
+                data-caption="SplitBill App"
+              >
+                <div class="project-tags">
+                  <span class="pill featured">System Analysis</span>
+                  <span class="pill">QA</span>
+                  <span class="pill">Frontend</span>
+                </div>
+                <h3>SplitBill App</h3>
+                <p class="desc">
+                  A bill-splitting app for Android, iOS, and Web. I wrote 17
+                  use cases and 6 user flows, designed the UI in Figma, and
+                  manually tested the split calculations.
+                </p>
+                <span class="project-link">View case study &rarr;</span>
+              </a>
+
+              <a
+                class="card-spotlight project-card"
+                href="#"
+                data-animated-content
+                data-ac-delay="0.06"
+                data-spotlight="accent"
+                data-tilt
+                data-caption="Analysis System Design"
+              >
+                <div class="project-tags">
+                  <span class="pill">System Analysis</span>
+                </div>
+                <h3>Analysis System Design</h3>
+                <p class="desc">
+                  A full analysis package: questionnaire, 8 user stories, 22
+                  technical tasks, 11 use cases, sequence &amp; class diagrams,
+                  and 11 prototype screens.
+                </p>
+                <span class="project-link">View document &rarr;</span>
+              </a>
+
+              <a
+                class="card-spotlight project-card"
+                href="#"
+                data-animated-content
+                data-ac-delay="0.12"
+                data-spotlight="accent"
+                data-tilt
+                data-caption="Thesis"
+              >
+                <div class="project-tags">
+                  <span class="pill">Research</span>
+                  <span class="pill">Data</span>
+                </div>
+                <h3>Breast Cancer Drug Sensitivity Prediction (Thesis)</h3>
+                <p class="desc">
+                  Undergraduate thesis predicting drug sensitivity using
+                  miRNA-derived graph representations and Graph Neural
+                  Networks.
+                </p>
+                <span class="project-link">Read paper &rarr;</span>
+              </a>
+
+              <a
+                class="card-spotlight project-card"
+                href="#"
+                data-animated-content
+                data-ac-delay="0.18"
+                data-spotlight="accent"
+                data-tilt
+                data-caption="PT Kriya Nusantara Sejahtera"
+              >
+                <div class="project-tags">
+                  <span class="pill">Web Development</span>
+                </div>
+                <h3>PT Kriya Nusantara Sejahtera</h3>
+                <p class="desc">
+                  Company profile website for a furniture, interior, and
+                  custom fabrication business.
+                </p>
+                <span class="project-link">Visit site &rarr;</span>
+              </a>
+
+              <a
+                class="card-spotlight project-card"
+                href="#"
+                data-animated-content
+                data-ac-delay="0.24"
+                data-spotlight="accent"
+                data-tilt
+                data-caption="Healthify"
+              >
+                <div class="project-tags">
+                  <span class="pill">Web Development</span>
+                </div>
+                <h3>Healthify</h3>
+                <p class="desc">
+                  A health forum web app built with PHP/Laravel, with login,
+                  threads &amp; comments (CRUD), search, and a translator.
+                </p>
+                <span class="project-link">View on GitHub &rarr;</span>
+              </a>
+
+              <a
+                class="card-spotlight project-card"
+                href="#"
+                data-animated-content
+                data-ac-delay="0.3"
+                data-spotlight="accent"
+                data-tilt
+                data-caption="Digital Invitation"
+              >
+                <div class="project-tags">
+                  <span class="pill">Web Development</span>
+                </div>
+                <h3>Digital Invitation</h3>
+                <p class="desc">
+                  A digital invitation website, deployed on Vercel.
+                </p>
+                <span class="project-link">Visit site &rarr;</span>
+              </a>
+
+              <a
+                class="card-spotlight project-card"
+                href="projects/jinot-bakehouse.html"
+                data-animated-content
+                data-ac-delay="0.36"
+                data-spotlight="accent"
+                data-tilt
+                data-caption="Jinot Bakehouse"
+              >
+                <div class="project-tags">
+                  <span class="pill">System Analysis</span>
+                  <span class="pill">QA</span>
+                  <span class="pill">Web</span>
+                </div>
+                <h3>Jinot Bakehouse (In progress)</h3>
+                <p class="desc">
+                  An end-to-end order and inventory system for a pre-order
+                  bakehouse, documented from requirements to test cases.
+                </p>
+                <span class="project-link">Coming soon &rarr;</span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="footer-row">
+          <span>&copy; 2026 portfolio by eugenialaellisahibau</span>
+          <span>Dibangun dengan HTML, CSS &amp; JavaScript murni</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
