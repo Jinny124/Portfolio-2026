@@ -43,12 +43,18 @@ p {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent-2);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
+/* Section yang difokuskan lewat JS setelah klik navigasi (tabindex="-1")
+   tidak perlu garis fokus mengelilingi seluruh section. */
+[tabindex='-1']:focus {
+  outline: none;
+}
+
 .container {
-  max-width: 1120px;
+  max-width: 1360px;
   margin: 0 auto;
-  padding: 0 clamp(20px, 4vw, 40px);
+  padding: 0 clamp(16px, 3vw, 32px);
 }

@@ -7,7 +7,7 @@
       name="description"
       content="Portofolio Jinny — System Analyst, Web Developer, dan QA."
     />
-    <title>jinny.dev</title>
+    <title>Eugenia Laellisa Hibau</title>
 
     <!-- SVG dipakai browser modern; ICO jadi cadangan dan juga yang diambil
          browser saat meminta /favicon.ico sendiri. -->
@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Karla:wght@400;500;600;700&family=Fragment+Mono&display=swap"
     />
 
     <link rel="stylesheet" href="css/tokens.css" />
@@ -27,26 +27,6 @@
     <link rel="stylesheet" href="css/reactbits.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/sections.css" />
-
-    <!-- Three.js dipakai latar hero. Import map ini yang membuat
-         `import('three')` di js/particle-network.js bisa diselesaikan
-         tanpa bundler. -->
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"
-        }
-      }
-    </script>
-
-    <!-- Three.js dimuat lewat import dinamis di dalam particle-network.js
-         supaya tidak menahan modul lain. Baris ini menyuruh browser mulai
-         mengunduhnya lebih awal, sejajar dengan berkas halaman. -->
-    <link
-      rel="modulepreload"
-      href="https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"
-      crossorigin
-    />
 
     <script type="module" src="js/main.js"></script>
   </head>
@@ -63,7 +43,7 @@
     <div class="page">
       <header class="nav">
         <div class="nav-row">
-          <a href="#top" class="logo">// <span>jinny</span></a>
+          <a href="#top" class="logo">eugenia<span>.</span></a>
 
           <nav class="links">
             <a href="#tentang">Tentang</a>
@@ -117,16 +97,17 @@
       <main id="top">
         <!-- ============ Hero ============ -->
         <section class="hero">
-          <!-- latar jaring partikel, digambar js/particle-network.js -->
-          <div class="hero-canvas-wrap canvas-layer" id="hero-canvas" aria-hidden="true"></div>
 
           <div class="container hero-inner">
-            <span class="eyebrow">System Analyst &middot; Frontend Developer &middot; Quality Assurance</span>
-
-            <!-- React Bits: SplitText, lalu GradientText pada kata ke-1 dan ke-5.
+            <!-- React Bits: SplitText, lalu GradientText pada kata terakhir.
                  Teksnya sengaja ditulis di HTML, bukan di JavaScript, supaya
                  tetap terbaca mesin pencari dan pembaca layar. -->
             <h1 id="hero-heading">Eugenia Laellisa Hibau</h1>
+
+            <p class="hero-roles">
+              Quality Assurance &middot; System Analyst &middot; Frontend Developer &middot;
+              Data Analyst
+            </p>
 
             <p class="sub" data-animated-content>
               Saya Jinny &mdash; menerjemahkan kebutuhan bisnis menjadi spesifikasi yang

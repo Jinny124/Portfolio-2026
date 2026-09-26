@@ -1,12 +1,16 @@
-# jinny.dev — Portofolio
+# Eugenia Laellisa Hibau — Portofolio
 
-Portofolio satu halaman untuk Jinny (System Analyst · Web Developer · QA).
-Dibangun dengan HTML, CSS, dan JavaScript murni — tanpa framework, tanpa
-bundler, tanpa `npm install`.
+Portofolio satu halaman untuk Eugenia "Jinny" Laellisa Hibau (System Analyst ·
+Frontend Developer · Quality Assurance). Dibangun dengan HTML, CSS, dan
+JavaScript murni — tanpa framework, tanpa bundler, tanpa `npm install`, dan
+tanpa library eksternal selain Google Fonts.
 
 Efek teksnya dan kartunya adalah port vanilla dari komponen
-[React Bits](https://www.reactbits.dev/). Latar hero berupa jaring partikel
-digambar sendiri di atas [Three.js](https://threejs.org/).
+[React Bits](https://www.reactbits.dev/).
+
+Tampilan: latar putih dengan aksen baby blue, font **Syne** untuk judul,
+**Karla** untuk teks, **Fragment Mono** untuk label. Tema terang adalah bawaan
+untuk semua pengunjung; tema gelap navy hanya lewat tombol di navigasi.
 
 ---
 
@@ -36,7 +40,7 @@ npx serve .
 ```
 
 > Kalau `index.html` dibuka langsung tanpa server, seluruh teks dan tata
-> letak tetap tampil normal — yang hilang hanya animasi dan partikelnya,
+> letak tetap tampil normal — yang hilang hanya animasinya,
 > karena browser menolak memuat modul dari `file://`.
 
 ---
@@ -49,7 +53,7 @@ MyPorto2026/
 ├── assets/
 │   └── sertifikat/         # gambar sertifikat, sisi panjang maks 1400 px
 ├── css/
-│   ├── tokens.css          # variabel warna, radius, font (gelap & terang)
+│   ├── tokens.css          # variabel warna, radius, font (terang & gelap)
 │   ├── base.css            # reset, tipografi dasar, .container
 │   ├── reactbits.css       # CSS komponen React Bits
 │   ├── layout.css          # latar, navigasi, tombol, hero, footer
@@ -57,7 +61,6 @@ MyPorto2026/
 └── js/
     ├── main.js             # memasang komponen ke elemen di index.html
     ├── theme.js            # tema gelap/terang + palet warna
-    ├── particle-network.js # latar hero: titik + garis penghubung (Three.js)
     ├── lightbox.js         # pratinjau sertifikat ukuran penuh (<dialog>)
     └── reactbits/
         ├── index.js        # titik ekspor semua komponen
@@ -89,7 +92,7 @@ Pola pemakaiannya seragam:
 ```js
 import { SpotlightCard } from './reactbits/index.js';
 
-const card = SpotlightCard(element, { spotlightColor: 'rgba(139,123,255,0.3)' });
+const card = SpotlightCard(element, { spotlightColor: 'rgba(47,111,176,0.16)' });
 card.destroy(); // lepas semua listener
 ```
 
@@ -106,39 +109,10 @@ Semuanya ditandai komentar di berkas terkait:
 - `SplitText` aslinya hanya menunggu `document.fonts.ready`. Di koneksi
   lambat itu membuat judul hero kosong beberapa detik, jadi ditambahkan
   batas waktu 800 ms.
-- Three.js dimuat lewat `import('three')` dinamis, bukan `import` statis.
-  Berkasnya sekitar satu megabita; kalau di-import statis, seluruh modul
-  halaman menunggu unduhannya selesai dan animasi teks baru mulai beberapa
-  detik kemudian.
 - `onceInView()` di `utils.js` memasang pemeriksaan viewport manual sebagai
   cadangan IntersectionObserver. Sebagian browser tidak mengirim callback
   observer selama tab belum pernah ditampilkan, dan tanpa cadangan itu isi
   halaman bisa tertinggal pada `opacity 0`.
-
----
-
-## Latar hero
-
-`js/particle-network.js` — bukan komponen React Bits, ditulis sendiri.
-Sembilan puluh titik disebar acak di dalam kotak yang lebih lebar daripada
-tinggi, lalu tiap pasang titik yang jaraknya di bawah `linkDistance` ditarik
-garis. Semuanya masuk satu `THREE.Group` yang berputar pelan dan sedikit
-mengikuti kursor.
-
-Garis dihitung sekali saat inisialisasi, bukan tiap frame — yang bergerak
-hanya rotasi grupnya. Nilai yang biasa disetel:
-
-| Opsi | Bawaan | Efek |
-| --- | --- | --- |
-| `count` | `90` | jumlah titik |
-| `radius` | `8.5` | radius dasar sebaran |
-| `linkDistance` | `4.6` | makin besar, makin rapat jaringnya |
-| `pointSize` | `0.11` | ukuran titik, satuan dunia bukan piksel |
-| `lineOpacity` | `0.18` | ketebalan kesan garis |
-| `cameraDistance` | `15` | makin kecil, makin dekat dan besar |
-
-Warnanya diambil dari `PALETTES` di `js/theme.js` (`point` dan `line`), jadi
-ikut berganti saat tema diubah.
 
 ---
 
@@ -192,7 +166,7 @@ perlu disentuh di berkas JavaScript.
 
 **Mengubah warna** — semua nilai ada di `css/tokens.css`. Kalau warna aksen
 diubah, samakan juga daftar warna di `PALETTES` pada `js/theme.js`, karena
-partikel dan gradien teks membaca dari sana.
+gradien teks membaca dari sana.
 
 **Mengubah judul hero** — tulis kalimat baru di `<h1 id="hero-heading">`,
 lalu sesuaikan `GRADIENT_WORDS` di `js/main.js` (indeks kata dihitung dari

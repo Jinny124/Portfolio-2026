@@ -16,7 +16,6 @@ import {
 
 import { onceInView } from './reactbits/utils.js';
 import Lightbox from './lightbox.js';
-import ParticleNetwork from './particle-network.js';
 import { currentPalette, restoreTheme, setupThemeToggle } from './theme.js';
 
 restoreTheme();
@@ -24,21 +23,10 @@ restoreTheme();
 /** Instance yang warnanya perlu ikut berganti saat tema diganti. */
 const themed = [];
 
-/* ---------------- latar hero: jaring partikel ---------------- */
-
-const heroNetwork = ParticleNetwork(document.getElementById('hero-canvas'), {
-  count: 90,
-  radius: 8.5,
-  linkDistance: 4.6,
-  pointColor: currentPalette().point,
-  lineColor: currentPalette().line,
-  pixelRatio: Math.min(window.devicePixelRatio || 1, 2),
-});
-
 /* ---------------- SplitText + GradientText: judul hero ---------------- */
 
-/** Indeks kata pada judul hero yang diberi gradien: "Eugenia" dan "Hibau". */
-const GRADIENT_WORDS = [0, 2];
+/** Indeks kata pada judul hero yang diberi gradien: "Hibau". */
+const GRADIENT_WORDS = [2];
 
 const heroHeading = SplitText(document.getElementById('hero-heading'), {
   splitType: 'words',
@@ -111,8 +99,8 @@ for (const el of document.querySelectorAll('[data-spotlight]')) {
   SpotlightCard(el, {
     spotlightColor:
       el.dataset.spotlight === 'accent'
-        ? 'rgba(139,123,255,0.30)'
-        : 'rgba(47,216,240,0.28)',
+        ? 'rgba(47,111,176,0.16)'
+        : 'rgba(140,197,238,0.32)',
   });
 }
 
@@ -151,6 +139,51 @@ if (spot && !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
 /* ---------------- tombol tema ---------------- */
 
 setupThemeToggle(document.getElementById('theme-toggle'), (palette) => {
-  heroNetwork.setColors(palette.point, palette.line);
   themed.forEach((instance) => instance.setColors(palette.gradient));
 });
+
+/* ---------------- navigasi dalam halaman tanpa # di alamat ---------------- */
+
+// Tautan seperti href="#kontak" tetap menggulir ke section-nya, tapi alamat
+// di bar browser tetap "/" dan tidak berubah jadi "/#kontak". href-nya tetap
+// ditulis "#kontak" di HTML, jadi tanpa JavaScript tautannya masih jalan.
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link || event.defaultPrevented || event.button !== 0) return;
+  // Ctrl/Cmd/Shift-klik dibiarkan ke perilaku bawaan browser.
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+  event.preventDefault();
+
+  const id = link.getAttribute('href').slice(1);
+  // href="#" (tautan yang belum diisi): jangan lompat ke atas halaman.
+  if (!id) return;
+
+  const behavior = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    ? 'auto'
+    : 'smooth';
+
+  // #top menunjuk <main>, yang posisinya di bawah header lengket; untuk
+  // benar-benar ke paling atas, gulir ke 0.
+  if (id === 'top') {
+    window.scrollTo({ top: 0, behavior });
+    return;
+  }
+
+  const target = document.getElementById(id);
+  if (!target) return;
+
+  target.scrollIntoView({ behavior, block: 'start' });
+
+  // Pindahkan fokus ke section tujuan, seperti lompatan # bawaan browser,
+  // supaya pengguna keyboard dan pembaca layar ikut berpindah.
+  if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+  target.focus({ preventScroll: true });
+});
+
+// Tautan lama yang sudah terlanjur dibagikan dengan #, misalnya "/#kontak",
+// tetap membuka section itu; setelah browser menggulir ke sana, # dibuang
+// dari alamat.
+if (location.hash) {
+  history.replaceState(null, '', location.pathname + location.search);
+}

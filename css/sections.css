@@ -98,7 +98,7 @@
 }
 
 .terminal-body .prompt {
-  color: var(--accent-2);
+  color: var(--accent);
 }
 
 .terminal-body .line {
@@ -141,7 +141,7 @@
   font-family: var(--font-mono);
   font-size: 11.5px;
   letter-spacing: 0.08em;
-  color: var(--accent-2);
+  color: var(--accent);
 }
 
 .skill-title {
@@ -257,7 +257,7 @@
   margin-top: 20px;
   font-family: var(--font-mono);
   font-size: 13px;
-  color: var(--accent-2);
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -268,9 +268,13 @@
 
 /* ---------------- Sertifikat ---------------- */
 
+/* Maksimal 3 kolom: dengan 6 sertifikat, 4 kolom menyisakan baris kedua
+   yang cuma terisi 2 kartu. Lebar minimum kolom = sepertiga baris (dikurangi
+   dua gap), jadi grid tidak pernah lebih dari 3 kolom; di layar sempit tetap
+   turun ke 2 lalu 1 kolom seperti biasa. */
 .certs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(max(260px, calc((100% - 44px) / 3)), 1fr));
   gap: 22px;
 }
 
@@ -440,14 +444,14 @@
 .term-row:hover,
 .term-row:focus-visible {
   background: var(--surface);
-  color: var(--accent-2);
+  color: var(--accent);
 }
 
 .term-row svg {
   width: 15px;
   height: 15px;
   flex-shrink: 0;
-  color: var(--accent-2);
+  color: var(--accent);
 }
 
 .term-row .field {
@@ -461,12 +465,12 @@
 
 .term-row:hover .value,
 .term-row:focus-visible .value {
-  color: var(--accent-2);
+  color: var(--accent);
 }
 
 .term-row .arrow {
   margin-left: auto;
-  color: var(--accent-2);
+  color: var(--accent);
   opacity: 0;
   transition: opacity 0.15s ease;
 }
@@ -491,7 +495,7 @@
 }
 
 .lightbox::backdrop {
-  background: rgba(4, 6, 16, 0.82);
+  background: rgba(12, 20, 33, 0.8);
   backdrop-filter: blur(4px);
 }
 
@@ -534,5 +538,5 @@
 
 .lightbox-close:hover {
   border-color: var(--accent-2);
-  color: var(--accent-2);
+  color: var(--accent);
 }

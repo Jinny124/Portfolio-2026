@@ -1,28 +1,27 @@
 /**
- * Pengelolaan tema gelap/terang.
+ * Pengelolaan tema terang/gelap.
  *
- * Urutan penentuan tema:
- *   1. pilihan pengguna yang tersimpan di localStorage
- *   2. preferensi sistem (prefers-color-scheme)
+ * Tema terang (sage dan putih) adalah bawaan untuk semua pengunjung,
+ * termasuk yang sistemnya diatur gelap. Tema gelap hanya aktif kalau
+ * pengunjung memilihnya lewat tombol, dan pilihan itu diingat di
+ * localStorage.
  *
  * Nilai warna sebenarnya ada di css/tokens.css; file ini hanya
  * memasang atribut data-theme di elemen <html>.
  */
 
-const STORAGE_KEY = 'jinny-theme';
+// Kunci baru: pilihan tema dari desain lama (gelap-ungu) sengaja tidak
+// dibawa, supaya semua orang melihat tampilan sage terang dulu.
+const STORAGE_KEY = 'eugenia-theme';
 const root = document.documentElement;
 
-/** Palet yang dipakai komponen React Bits, disamakan dengan token CSS. */
+/** Palet yang dipakai efek JavaScript, disamakan dengan token CSS. */
 export const PALETTES = {
-  dark: {
-    point: '#8b7bff',
-    line: '#2fd8f0',
-    gradient: ['#8b7bff', '#2fd8f0', '#ff6f9c'],
-  },
   light: {
-    point: '#5a43e0',
-    line: '#0a8aa0',
-    gradient: ['#5a43e0', '#0a8aa0', '#c8306e'],
+    gradient: ['#2f6fb0', '#7fbbe8', '#1f5a94'],
+  },
+  dark: {
+    gradient: ['#8cc5ee', '#bfe0f7', '#6aaee0'],
   },
 };
 
@@ -52,13 +51,10 @@ export function restoreTheme() {
 
 /** @returns {boolean} apakah tampilan saat ini gelap. */
 export function isDark() {
-  const explicit = root.getAttribute('data-theme');
-  if (explicit === 'dark') return true;
-  if (explicit === 'light') return false;
-  return !window.matchMedia?.('(prefers-color-scheme: light)').matches;
+  return root.getAttribute('data-theme') === 'dark';
 }
 
-/** @returns {{point: string, line: string, gradient: string[]}} palet tema aktif. */
+/** @returns {{gradient: string[]}} palet tema aktif. */
 export function currentPalette() {
   return isDark() ? PALETTES.dark : PALETTES.light;
 }
@@ -66,7 +62,7 @@ export function currentPalette() {
 /**
  * Pasang tombol pengganti tema.
  * @param {HTMLElement} button
- * @param {(palette: {point: string, line: string, gradient: string[]}) => void} onChange
+ * @param {(palette: {gradient: string[]}) => void} onChange
  */
 export function setupThemeToggle(button, onChange) {
   if (!button) return;

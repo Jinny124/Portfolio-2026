@@ -17,8 +17,8 @@
   position: absolute;
   inset: -10% -10%;
   background-image:
-    linear-gradient(to right, rgba(139, 123, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(139, 123, 255, 0.07) 1px, transparent 1px);
+    linear-gradient(to right, color-mix(in srgb, var(--accent) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--accent) 6%, transparent) 1px, transparent 1px);
   background-size: 56px 56px;
   -webkit-mask-image: radial-gradient(circle at 50% 0%, black, transparent 75%);
   mask-image: radial-gradient(circle at 50% 0%, black, transparent 75%);
@@ -30,12 +30,14 @@
   inset: 0;
   background: radial-gradient(
     560px circle at var(--mx, 50%) var(--my, 20%),
-    rgba(139, 123, 255, 0.16),
+    color-mix(in srgb, var(--accent-2) 12%, transparent),
     transparent 60%
   );
   transition: background 0.3s ease;
 }
 
+/* Di latar terang blob mudah terlalu pekat, jadi opasitasnya lebih
+   rendah daripada saat situs masih gelap. */
 .bg-blob {
   position: absolute;
   width: 46vw;
@@ -44,7 +46,7 @@
   max-height: 640px;
   border-radius: 50%;
   filter: blur(90px);
-  opacity: 0.28;
+  opacity: 0.2;
 }
 
 .bg-blob.b1 {
@@ -108,22 +110,22 @@ header.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1120px;
+  max-width: 1360px;
   margin: 0 auto;
-  padding: 16px clamp(20px, 4vw, 40px);
+  padding: 16px clamp(16px, 3vw, 32px);
 }
 
 .logo {
-  font-family: var(--font-mono);
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
   color: var(--text);
   text-decoration: none;
 }
 
 .logo span {
-  color: var(--accent-2);
+  color: var(--accent);
 }
 
 nav.links {
@@ -157,36 +159,38 @@ nav.links a:hover {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 20px;
+  padding: 11px 18px;
   border: 1px solid transparent;
-  border-radius: 999px;
+  border-radius: var(--radius-s);
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 14.5px;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
+    border-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #050810;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px -10px rgba(139, 123, 255, 0.55);
+  box-shadow: 0 10px 26px -12px color-mix(in srgb, var(--accent) 70%, transparent);
 }
 
 .btn-ghost {
-  background: transparent;
+  background: var(--surface);
   border-color: var(--border);
   color: var(--text);
 }
 
 .btn-ghost:hover {
-  border-color: var(--accent-2);
-  color: var(--accent-2);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .nav-cta {
@@ -212,7 +216,7 @@ nav.links a:hover {
 
 .theme-toggle:hover {
   border-color: var(--accent-2);
-  color: var(--accent-2);
+  color: var(--accent);
   transform: translateY(-1px);
 }
 
@@ -234,28 +238,7 @@ nav.links a:hover {
 .hero {
   position: relative;
   overflow: hidden;
-  padding: clamp(72px, 11vw, 120px) 0 clamp(56px, 8vw, 88px);
-}
-
-/* wadah canvas latar hero */
-.canvas-layer {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.canvas-layer canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.hero-canvas-wrap {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 96%);
-  mask-image: linear-gradient(to bottom, black 55%, transparent 96%);
+  padding: clamp(40px, 5vw, 64px) 0 clamp(32px, 4vw, 48px);
 }
 
 .hero-inner {
@@ -263,40 +246,39 @@ nav.links a:hover {
   z-index: 1;
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 28px;
-  padding: 6px 14px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--surface) 70%, transparent);
-  font-family: var(--font-mono);
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-2);
-}
-
-.eyebrow::before {
-  content: '';
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent-2);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 25%, transparent);
-}
-
+/* Nama dalam satu baris. Di Syne 800, "Eugenia Laellisa Hibau" selebar
+   ±17,5 kali ukuran fontnya. Lebar kolom konten ±(lebar layar - 64px),
+   maksimal 1296px, jadi:
+   - 5.2vw menjaga nama tetap muat di kolom pada lebar layar berapa pun;
+   - 4.5rem (72px) batas atas, karena 72 x 17,5 = 1260px < 1296px.
+   Kalau namanya diganti, hitung ulang angka ini. */
 .hero h1 {
-  max-width: 15ch;
-  font-size: clamp(2.4rem, 5.4vw, 4.1rem);
-  font-weight: 700;
-  line-height: 1.08;
+  font-size: clamp(2rem, 5.2vw, 4.5rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+/* Di HP, satu baris berarti huruf sekecil ±19px. Lebih baik nama
+   turun baris dengan ukuran yang tetap tampil sebagai judul. */
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 2.4rem;
+    white-space: normal;
+  }
+}
+
+/* peran, ditulis mono di bawah nama */
+.hero-roles {
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 1.3vw, 0.95rem);
+  color: var(--text-muted);
 }
 
 .hero p.sub {
-  margin-top: 24px;
+  margin-top: 18px;
   max-width: 52ch;
   font-size: clamp(1rem, 1.6vw, 1.15rem);
   color: var(--text-muted);
@@ -312,7 +294,7 @@ nav.links a:hover {
 /* ---------------- kepala section ---------------- */
 
 section {
-  padding: clamp(64px, 9vw, 104px) 0;
+  padding: clamp(32px, 4vw, 48px) 0;
 }
 
 .section-head {
@@ -344,7 +326,7 @@ section {
 
 footer {
   border-top: 1px solid var(--border);
-  padding: 26px clamp(20px, 4vw, 40px);
+  padding: 26px clamp(16px, 3vw, 32px);
 }
 
 .footer-row {
@@ -352,7 +334,7 @@ footer {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 10px;
-  max-width: 1120px;
+  max-width: 1360px;
   margin: 0 auto;
   font-family: var(--font-mono);
   font-size: 13px;

@@ -1,89 +1,77 @@
 /* ============================================================
    Design token — sumber tunggal untuk warna, radius, dan font.
-   Dark-first: nilai di :root adalah tema gelap, lalu ditimpa
-   oleh preferensi sistem dan oleh atribut [data-theme] manual.
+
+   Light-first: nilai di :root adalah tema baby blue dan putih,
+   dan itu yang tampil untuk semua orang secara bawaan, termasuk
+   yang sistemnya diatur gelap. Tema gelap hanya aktif kalau
+   pengunjung memilihnya sendiri lewat tombol tema
+   (atribut [data-theme='dark'] di <html>).
+
+   Dua biru, dengan peran berbeda:
+   --accent    biru tua, untuk tombol dan TEKS. Kontrasnya cukup di
+               atas putih.
+   --accent-2  baby blue, hanya untuk garis, titik, dan rona. Terlalu
+               muda untuk teks: jangan dipakai sebagai `color:` di
+               atas latar terang.
    ============================================================ */
 
 :root {
-  --bg: #070a12;
-  --bg-elevated: #0d1220;
-  --surface: #131a2b;
-  --surface-2: #1a2338;
-  --border: #262f4a;
-
-  --text: #eef1f8;
-  --text-muted: #9aa3bd;
-  --text-dim: #5c6688;
-  --code: #b7c2e6;
-
-  --accent: #8b7bff;
-  --accent-2: #2fd8f0;
-  --accent-warm: #ff6f9c;
-
-  --shadow: 0 20px 60px -20px rgba(4, 6, 16, 0.6);
-
-  --radius-s: 10px;
-  --radius-m: 16px;
-  --radius-l: 24px;
-
-  --font-display: 'Unbounded', 'Segoe UI', sans-serif;
-  --font-body: 'Manrope', 'Segoe UI', Arial, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
-
-  /* dipakai .theme-toggle untuk menentukan ikon mana yang tampil */
-  --icon-sun: inline;
-  --icon-moon: none;
-}
-
-/* Tema terang mengikuti sistem, kecuali pengguna sudah memilih gelap. */
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme='dark']) {
-    --bg: #f4f5fb;
-    --bg-elevated: #ffffff;
-    --surface: #ffffff;
-    --surface-2: #eef0fa;
-    --border: #dde1f0;
-
-    --text: #12172a;
-    --text-muted: #535d79;
-    --text-dim: #828da8;
-    --code: #3c4470;
-
-    --accent: #5a43e0;
-    --accent-2: #0a8aa0;
-    --accent-warm: #c8306e;
-
-    --shadow: 0 20px 50px -25px rgba(30, 35, 70, 0.18);
-
-    --icon-sun: none;
-    --icon-moon: inline;
-  }
-}
-
-/* Pilihan manual lewat tombol tema selalu menang. */
-:root[data-theme='light'] {
-  --bg: #f4f5fb;
+  --bg: #f4f8fc;
   --bg-elevated: #ffffff;
   --surface: #ffffff;
-  --surface-2: #eef0fa;
-  --border: #dde1f0;
+  --surface-2: #e4eff9;
+  --border: #d2e0ee;
 
-  --text: #12172a;
-  --text-muted: #535d79;
-  --text-dim: #828da8;
-  --code: #3c4470;
+  --text: #16233a;
+  --text-muted: #52637c;
+  --text-dim: #8293aa;
+  --code: #34496a;
 
-  --accent: #5a43e0;
-  --accent-2: #0a8aa0;
-  --accent-warm: #c8306e;
+  --accent: #2f6fb0;
+  --accent-2: #8cc5ee;
+  --accent-warm: #bfe0f7;
 
-  --shadow: 0 20px 50px -25px rgba(30, 35, 70, 0.18);
+  /* warna teks di atas tombol berwarna aksen */
+  --on-accent: #ffffff;
 
+  --shadow: 0 18px 40px -24px rgba(22, 35, 58, 0.2);
+
+  --radius-s: 10px;
+  --radius-m: 12px;
+  --radius-l: 20px;
+
+  --font-display: 'Syne', 'Segoe UI', sans-serif;
+  --font-body: 'Karla', 'Segoe UI', Arial, sans-serif;
+  --font-mono: 'Fragment Mono', 'Consolas', monospace;
+
+  /* dipakai .theme-toggle untuk menentukan ikon mana yang tampil */
   --icon-sun: none;
   --icon-moon: inline;
 }
 
+/* Tema gelap: navy-arang dengan baby blue sebagai aksen. Di latar gelap
+   baby blue cukup terang untuk teks, jadi keduanya boleh jadi teks.
+   Hanya lewat pilihan manual, tidak mengikuti sistem. */
 :root[data-theme='dark'] {
+  --bg: #0f1520;
+  --bg-elevated: #141c29;
+  --surface: #18212f;
+  --surface-2: #1f2b3c;
+  --border: #2a3749;
+
+  --text: #e6eef8;
+  --text-muted: #a0afc2;
+  --text-dim: #6c7c91;
+  --code: #c3d4ea;
+
+  --accent: #8cc5ee;
+  --accent-2: #6aaee0;
+  --accent-warm: #bfe0f7;
+
+  --on-accent: #0c1522;
+
+  --shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.55);
+
   --icon-sun: inline;
   --icon-moon: none;
 }
