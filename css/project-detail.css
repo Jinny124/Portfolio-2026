@@ -1,0 +1,171 @@
+/* ============================================================
+   Halaman detail proyek (projects/*.html).
+
+   Dipakai bersama tokens.css + base.css + layout.css + sections.css
+   (untuk .container, .section-head, .pill, .project-tags, nav, footer).
+   File ini hanya berisi yang khas milik halaman detail: hero judul,
+   grid ringkasan-kasus, dan navigasi ke proyek lain.
+   ============================================================ */
+
+.pd-hero {
+  padding: clamp(28px, 5vw, 48px) 0 clamp(20px, 3vw, 32px);
+}
+
+.pd-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 22px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.pd-back:hover {
+  color: var(--accent);
+}
+
+.pd-hero .project-tags {
+  margin-bottom: 18px;
+}
+
+.pd-hero h1 {
+  max-width: 22ch;
+  font-size: clamp(28.8px, 4.4vw, 44.8px);
+}
+
+.pd-summary {
+  margin-top: 16px;
+  max-width: 65ch;
+  font-size: clamp(16px, 1.6vw, 18.4px);
+  color: var(--text-muted);
+}
+
+/* ---------------- meta: tahun / peran / tumpukan ---------------- */
+
+.pd-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  margin: 32px 0 0;
+  padding: 22px 0 0;
+  border-top: 1px solid var(--border);
+}
+
+.pd-meta dt {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.pd-meta dd {
+  margin: 6px 0 0;
+  font-size: 15px;
+}
+
+/* ---------------- badan: studi kasus + sisi alat ---------------- */
+
+.pd-body {
+  padding-top: clamp(8px, 2vw, 16px);
+}
+
+.pd-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 280px);
+  gap: clamp(32px, 5vw, 56px);
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .pd-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pd-case {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4vw, 40px);
+}
+
+.pd-case section h2 {
+  font-size: 21.5px;
+}
+
+.pd-case section p {
+  margin-top: 10px;
+  max-width: 68ch;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.pd-side {
+  position: sticky;
+  top: 96px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow);
+}
+
+.pd-side h2 {
+  font-size: 15px;
+}
+
+.pd-side .toolbox-items {
+  margin-top: 14px;
+}
+
+.pd-side .btn {
+  margin-top: 20px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* ---------------- navigasi ke proyek lain ---------------- */
+
+.pd-pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: clamp(48px, 6vw, 72px);
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+
+.pd-pager a {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 320px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.pd-pager a:last-child {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.pd-pager .pd-pager-label {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.pd-pager .pd-pager-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.pd-pager a:hover .pd-pager-title {
+  color: var(--accent);
+}

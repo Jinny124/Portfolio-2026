@@ -32,9 +32,6 @@
 
 .avatar {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   overflow: hidden;
   border: 1px solid var(--border);
@@ -43,13 +40,20 @@
 }
 
 .avatar img {
+  /* position: absolute mengeluarkan foto dari perhitungan tinggi konten
+     avatar. Tanpa ini, foto berpotret (lebih tinggi dari lebar) memaksa
+     avatar ikut setinggi rasio aspeknya sendiri saat grid menghitung
+     tinggi baris, membuat baris (dan avatar) lebih tinggi daripada kartu
+     terminal di sebelahnya. Dengan absolute, avatar tidak punya tinggi
+     konten sendiri, jadi baris grid mengikuti tinggi terminal, dan
+     avatar -- yang diregangkan grid ke tinggi baris itu -- pas sama
+     panjang dengan terminal. */
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* wajah ada di sepertiga atas foto sumber; posisi ini menjaganya tetap
-     aman di dalam bingkai kalau kotaknya jadi sangat tinggi atau sangat
-     pendek. */
-  object-position: center 22%;
+  object-position: center 80%;
 }
 
 .terminal {
@@ -132,19 +136,7 @@
   border-color: color-mix(in srgb, var(--accent-2) 45%, var(--border));
 }
 
-.skill-tag {
-  display: inline-block;
-  padding: 3px 8px;
-  border-radius: 6px;
-  background: color-mix(in srgb, var(--accent-2) 12%, transparent);
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.92px; /* 0.08em pada 11.5px */
-  color: var(--accent);
-}
-
 .skill-title {
-  margin-top: 14px;
   font-family: var(--font-display);
   font-size: 16.8px;
   font-weight: 600;
@@ -157,28 +149,39 @@
   color: var(--text-muted);
 }
 
-.skill-bar {
-  margin-top: 18px;
-  height: 6px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: var(--surface-2);
+/* daftar tag di bawah deskripsi; memakai .pill yang sama dengan
+   .project-tags supaya bahasa desainnya konsisten. */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
 }
 
-/* lebar diisi js/main.js saat bar ini masuk viewport */
-.skill-bar-fill {
-  width: 0;
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transition: width 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
+/* satu baris ringkas di bawah keempat kartu, bukan diulang per kartu */
+.toolbox-strip {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
 }
 
-.skill-level {
-  margin-top: 8px;
+.toolbox-label {
+  flex-shrink: 0;
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 12.5px;
+  letter-spacing: 1.75px; /* 0.14em pada 12.5px, sama seperti .kicker */
+  text-transform: uppercase;
   color: var(--text-dim);
+}
+
+.toolbox-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 /* ---------------- Proyek ---------------- */
@@ -190,11 +193,16 @@
 }
 
 /* skin di atas .card-spotlight milik React Bits */
+/* Kartunya sendiri adalah <a> (klik di mana saja membuka detail),
+   jadi text-decoration dan color dari anchor bawaan browser perlu
+   direset di sini. */
 .project-card {
   display: flex;
   flex-direction: column;
   min-height: 100%;
   padding: 26px;
+  text-decoration: none;
+  color: inherit;
 }
 
 .project-card:hover {
@@ -261,7 +269,8 @@
 }
 
 .project-link:hover,
-.cert-link:hover {
+.cert-link:hover,
+.project-card:hover .project-link {
   text-decoration: underline;
 }
 
@@ -275,6 +284,42 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(max(260px, calc((100% - 44px) / 3)), 1fr));
   gap: 22px;
+}
+
+/* Baris kepala section Sertifikat: judul di kiri, tautan "See all" di
+   kanan, sejajar di baris yang sama alih-alih tombol di bawah grid. */
+.section-head-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.section-head-row .section-head {
+  margin-bottom: 0;
+}
+
+.section-see-all {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.section-see-all:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 560px) {
+  .section-head-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* skin di atas .card-spotlight milik React Bits */

@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Studi kasus: sistem manajemen stok dan pesanan untuk Jinot Bakehouse."
+    />
+    <title>Jinot Bakehouse — Eugenia Laellisa Hibau</title>
+
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Karla:wght@400;500;600;700&family=Fragment+Mono&display=swap"
+    />
+
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/sections.css" />
+    <link rel="stylesheet" href="../css/project-detail.css" />
+
+    <script type="module" src="../js/project-page.js"></script>
+  </head>
+
+  <body>
+    <div class="bg-fx" aria-hidden="true">
+      <div class="bg-grid"></div>
+      <div class="bg-blob b1"></div>
+      <div class="bg-blob b2"></div>
+    </div>
+
+    <div class="page">
+      <header class="nav">
+        <div class="nav-row">
+          <a href="../index.html#top" class="logo">eugenia<span>.</span></a>
+
+          <nav class="links">
+            <a href="../index.html#tentang">Tentang</a>
+            <a href="../index.html#keahlian">Keahlian</a>
+            <a href="../index.html#proyek">Projects</a>
+            <a href="../index.html#sertifikat">Sertifikat</a>
+            <a href="../index.html#kontak">Kontak</a>
+          </nav>
+
+          <div class="nav-cta">
+            <button
+              type="button"
+              class="theme-toggle"
+              id="theme-toggle"
+              aria-label="Ganti tema terang/gelap"
+            >
+              <svg
+                class="icon-sun"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="4"></circle>
+                <path
+                  d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                ></path>
+              </svg>
+              <svg
+                class="icon-moon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+              </svg>
+            </button>
+
+            <a class="btn btn-primary" href="../index.html#kontak">Hubungi Saya</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="pd-hero">
+          <div class="container">
+            <a class="pd-back" href="../index.html#proyek">&larr; Kembali ke proyek</a>
+
+            <div class="project-tags">
+              <span class="pill featured">Analisis Sistem</span>
+              <span class="pill">Web App</span>
+              <span class="pill">Inventori</span>
+            </div>
+
+            <h1 data-animated-content>Jinot Bakehouse &mdash; Sistem Manajemen Stok &amp; Pesanan</h1>
+            <p class="pd-summary" data-animated-content>
+              Aplikasi untuk mencatat stok bahan baku, mengelola pesanan kue, dan
+              merangkum laporan penjualan Jinot Bakehouse dalam satu dashboard.
+            </p>
+
+            <dl class="pd-meta" data-animated-content data-ac-delay="0.08">
+              <div>
+                <dt>Tahun</dt>
+                <dd>2025</dd>
+              </div>
+              <div>
+                <dt>Peran</dt>
+                <dd>System Analyst &amp; Frontend Developer</dd>
+              </div>
+              <div>
+                <dt>Klien</dt>
+                <dd>Jinot Bakehouse (UMKM)</dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="pd-body">
+          <div class="container pd-grid">
+            <div class="pd-case">
+              <section data-animated-content>
+                <h2>Masalah</h2>
+                <p>
+                  Pemilik mencatat stok bahan baku dan pesanan kue secara manual di
+                  buku dan grup WhatsApp. Perhitungan stok sering meleset, pesanan
+                  terselip di antara chat, dan pemilik baru tahu bahan baku habis
+                  saat sudah kepepet produksi.
+                </p>
+              </section>
+
+              <section data-animated-content data-ac-delay="0.06">
+                <h2>Pendekatan</h2>
+                <p>
+                  Saya mewawancarai alur kerja harian toko: dari belanja bahan,
+                  penerimaan pesanan, sampai produksi. Dari situ disusun use case
+                  dan alur sistem sederhana, lalu dibangun dashboard yang
+                  memisahkan tiga hal utama &mdash; stok bahan baku, daftar pesanan
+                  berjalan, dan ringkasan penjualan harian &mdash; supaya pemilik
+                  tidak perlu membuka banyak sumber untuk tahu kondisi toko.
+                </p>
+              </section>
+
+              <section data-animated-content data-ac-delay="0.12">
+                <h2>Hasil</h2>
+                <p>
+                  Pemilik bisa memantau sisa stok bahan baku secara langsung dan
+                  mendapat peringatan sebelum bahan benar-benar habis. Pesanan yang
+                  tadinya tersebar di chat sekarang tercatat di satu tempat,
+                  sehingga lebih jarang ada pesanan yang terlewat.
+                </p>
+              </section>
+            </div>
+
+            <aside class="pd-side" data-animated-content data-ac-delay="0.18">
+              <h2 class="kicker">Toolbox</h2>
+              <div class="toolbox-items">
+                <span class="pill">Figma</span>
+                <span class="pill">HTML</span>
+                <span class="pill">CSS</span>
+                <span class="pill">JavaScript</span>
+                <span class="pill">Google Sheets API</span>
+              </div>
+              <a class="btn btn-primary" href="../index.html#kontak">Diskusikan proyek serupa</a>
+            </aside>
+          </div>
+
+          <div class="container">
+            <nav class="pd-pager">
+              <a href="qa-checkout.html">
+                <span class="pd-pager-label">&larr; Sebelumnya</span>
+                <span class="pd-pager-title">Pengujian Checkout &amp; Pembayaran</span>
+              </a>
+              <a href="portal-klien.html">
+                <span class="pd-pager-label">Selanjutnya &rarr;</span>
+                <span class="pd-pager-title">Redesain Dashboard Portal Klien</span>
+              </a>
+            </nav>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="footer-row">
+          <span>&copy; 2026 portfolio by eugenialaellisahibau</span>
+          <span>Dibangun dengan HTML, CSS &amp; JavaScript murni</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

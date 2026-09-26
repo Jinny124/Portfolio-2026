@@ -14,7 +14,6 @@ import {
   TiltedCard,
 } from './reactbits/index.js';
 
-import { onceInView } from './reactbits/utils.js';
 import Lightbox from './lightbox.js';
 import { currentPalette, restoreTheme, setupThemeToggle } from './theme.js';
 
@@ -80,19 +79,6 @@ for (const el of document.querySelectorAll('[data-animated-content]')) {
   });
 }
 
-/* ---------------- bar keahlian ---------------- */
-
-// Tiap bar punya pemicunya sendiri, tidak menumpang callback penyelesaian
-// AnimatedContent. Peristiwa selesai animasi tidak selalu terkirim -- di tab
-// latar, misalnya -- dan kalau bar bergantung padanya, isinya tidak pernah
-// terisi meski kartunya sudah terlihat. Pengisian lebarnya sendiri dianimasikan
-// oleh transition di css/sections.css.
-for (const bar of document.querySelectorAll('.skill-bar-fill')) {
-  onceInView(bar, 0.15, '0px', () => {
-    bar.style.width = `${bar.dataset.level}%`;
-  });
-}
-
 /* ---------------- SpotlightCard ---------------- */
 
 for (const el of document.querySelectorAll('[data-spotlight]')) {
@@ -144,24 +130,23 @@ setupThemeToggle(document.getElementById('theme-toggle'), (palette) => {
 
 /* ---------------- navigasi dalam halaman tanpa # di alamat ---------------- */
 
-// Tautan seperti href="#kontak" tetap menggulir ke section-nya, tapi alamat
-// di bar browser tetap "/" dan tidak berubah jadi "/#kontak". href-nya tetap
-// ditulis "#kontak" di HTML, jadi tanpa JavaScript tautannya masih jalan.
-document.addEventListener('click', (event) => {
-  const link = event.target.closest('a[href^="#"]');
-  if (!link || event.defaultPrevented || event.button !== 0) return;
-  // Ctrl/Cmd/Shift-klik dibiarkan ke perilaku bawaan browser.
-  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-
-  event.preventDefault();
-
-  const id = link.getAttribute('href').slice(1);
-  // href="#" (tautan yang belum diisi): jangan lompat ke atas halaman.
-  if (!id) return;
-
-  const behavior = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
-    ? 'auto'
-    : 'smooth';
+/**
+ * Gulir ke section dengan id tertentu, seperti lompatan # bawaan
+ * browser, tapi dipicu manual supaya bisa dipakai baik dari klik
+ * langsung maupun dari alamat yang sudah membawa # saat halaman
+ * dimuat (lihat pemakaian di bawah).
+ * @param {string} id
+ * @param {'smooth'|'auto'} [behaviorOverride] paksa satu nilai behavior,
+ *        lewati deteksi prefers-reduced-motion. Dipakai untuk lompatan
+ *        saat halaman baru dimuat -- lihat komentar di pemanggilnya.
+ */
+function scrollToSection(id, behaviorOverride) {
+  // 'auto' bukan "instan" -- artinya "ikut CSS scroll-behavior", dan
+  // base.css set scroll-behavior: smooth di <html>. Jadi instan yang benar
+  // harus eksplisit 'instant', bukan 'auto'.
+  const behavior =
+    behaviorOverride ??
+    (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth');
 
   // #top menunjuk <main>, yang posisinya di bawah header lengket; untuk
   // benar-benar ke paling atas, gulir ke 0.
@@ -179,11 +164,58 @@ document.addEventListener('click', (event) => {
   // supaya pengguna keyboard dan pembaca layar ikut berpindah.
   if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
   target.focus({ preventScroll: true });
+}
+
+// Tautan seperti href="#kontak" tetap menggulir ke section-nya, tapi alamat
+// di bar browser tetap "/" dan tidak berubah jadi "/#kontak". href-nya tetap
+// ditulis "#kontak" di HTML, jadi tanpa JavaScript tautannya masih jalan.
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link || event.defaultPrevented || event.button !== 0) return;
+  // Ctrl/Cmd/Shift-klik dibiarkan ke perilaku bawaan browser.
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+  event.preventDefault();
+
+  const id = link.getAttribute('href').slice(1);
+  // href="#" (tautan yang belum diisi): jangan lompat ke atas halaman.
+  if (!id) return;
+
+  scrollToSection(id);
 });
 
-// Tautan lama yang sudah terlanjur dibagikan dengan #, misalnya "/#kontak",
-// tetap membuka section itu; setelah browser menggulir ke sana, # dibuang
-// dari alamat.
+// Tautan dari halaman lain yang menuju sini dengan #, misalnya
+// "projects/qa-checkout.html" -> "../index.html#kontak", atau tautan lama
+// yang sudah terlanjur dibagikan dengan #. Digulir manual dulu -- bukan
+// mengandalkan lompatan # bawaan browser -- karena replaceState di bawah
+// membuang location.hash sebelum lompatan bawaan itu sempat terjadi,
+// sehingga kalau dibiarkan, halaman malah diam di posisi paling atas.
+//
+// Behavior dipaksa 'instant', bukan 'smooth': lompatan # bawaan browser
+// sendiri juga selalu instan, jadi ini tidak mengurangi apa-apa dari
+// perilaku normal. ('auto' TIDAK berarti instan -- itu berarti "ikut
+// scroll-behavior CSS", dan base.css set itu ke smooth di <html>, jadi
+// 'auto' di sini justru tetap animasi smooth.)
+//
+// scrollIntoView dipanggil berulang lewat requestAnimationFrame, bukan
+// sekali saja -- di tab yang baru dimuat dan belum sempat digambar
+// (atau masih di latar), satu panggilan bisa diam-diam tidak berefek
+// sama sekali (bukan cuma telat: posisi gulir benar-benar tidak
+// berubah). Mengulang beberapa kali menjamin salah satu percobaan jatuh
+// di frame yang sudah bisa menggambar. Kalau percobaan pertama sudah
+// berhasil (kasus normal), sisa percobaan cuma menegaskan ulang posisi
+// yang sama, tidak berdampak apa pun.
 if (location.hash) {
+  const id = location.hash.slice(1);
   history.replaceState(null, '', location.pathname + location.search);
+
+  (document.fonts?.ready ?? Promise.resolve()).then(() => {
+    let sisaPercobaan = 15;
+    function ulangGulir() {
+      scrollToSection(id, 'instant');
+      sisaPercobaan -= 1;
+      if (sisaPercobaan > 0) requestAnimationFrame(ulangGulir);
+    }
+    ulangGulir();
+  });
 }

@@ -24,11 +24,18 @@ a {
   color: inherit;
 }
 
+/* line-height 1.15, bukan mewarisi 1.6 dari body: pada font sebesar
+   judul, leading longgar ala paragraf menambah spasi kosong di atas
+   dan bawah tulisan jauh lebih besar dari yang terlihat wajar, dan
+   selama ini membuat jarak di sekitar semua judul section terasa
+   terlalu lebar. .hero h1 sudah punya line-height sendiri (0.98) jadi
+   tidak terpengaruh. */
 h1,
 h2,
 h3 {
   margin: 0;
   font-family: var(--font-display);
+  line-height: 1.15;
   letter-spacing: -0.01em;
   text-wrap: balance;
 }
