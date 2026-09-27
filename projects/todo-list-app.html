@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Studi kasus: To-Do List App, dirancang dengan UML lalu dibangun sebagai aplikasi konsol Java."
+    />
+    <title>To-Do List App — Eugenia Laellisa Hibau</title>
+
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Karla:wght@400;500;600;700&family=Fragment+Mono&display=swap"
+    />
+
+    <link rel="stylesheet" href="../css/tokens.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/sections.css" />
+    <link rel="stylesheet" href="../css/project-detail.css" />
+
+    <script type="module" src="../js/project-page.js"></script>
+  </head>
+
+  <body>
+    <div class="bg-fx" aria-hidden="true">
+      <div class="bg-grid"></div>
+      <div class="bg-blob b1"></div>
+      <div class="bg-blob b2"></div>
+    </div>
+
+    <div class="page">
+      <header class="nav">
+        <div class="nav-row">
+          <a href="../index.html#top" class="logo">eugenia<span>.</span></a>
+
+          <nav class="links">
+            <a href="../index.html#tentang">Tentang</a>
+            <a href="../index.html#keahlian">Keahlian</a>
+            <a href="../index.html#proyek">Projects</a>
+            <a href="../index.html#sertifikat">Sertifikat</a>
+            <a href="../index.html#kontak">Kontak</a>
+          </nav>
+
+          <div class="nav-cta">
+            <button
+              type="button"
+              class="theme-toggle"
+              id="theme-toggle"
+              aria-label="Ganti tema terang/gelap"
+            >
+              <svg
+                class="icon-sun"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="4"></circle>
+                <path
+                  d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                ></path>
+              </svg>
+              <svg
+                class="icon-moon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"></path>
+              </svg>
+            </button>
+
+            <a class="btn btn-primary" href="../index.html#kontak">Hubungi Saya</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="pd-hero">
+          <div class="container pd-hero-row">
+            <div class="pd-intro">
+              <div class="project-tags" data-animated-content>
+                <span class="pill featured">System Design Case Study</span>
+              </div>
+
+              <h1 data-animated-content data-ac-delay="0.04">To-Do List App</h1>
+              <p class="pd-summary" data-animated-content data-ac-delay="0.08">
+                A personal task manager designed end to end with UML, then
+                built as a Java console app using the Factory and Strategy
+                patterns.
+              </p>
+
+              <div class="pd-cta" data-animated-content data-ac-delay="0.12">
+                <a class="btn btn-primary" href="../assets/case-studies/todo-list-app/case-study.pdf" target="_blank" rel="noopener">
+                  View full case study (PDF)
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 17 17 7" />
+                    <path d="M7 7h10v10" />
+                  </svg>
+                </a>
+              </div>
+
+              <dl class="pd-stats" data-animated-content data-ac-delay="0.16">
+                <div>
+                  <dt>Year</dt>
+                  <dd>2024</dd>
+                </div>
+                <div>
+                  <dt>Role</dt>
+                  <dd>System Analyst</dd>
+                </div>
+                <div>
+                  <dt>Type</dt>
+                  <dd>Course project, BINUS University</dd>
+                </div>
+                <div>
+                  <dt>Tools</dt>
+                  <dd>Visual Paradigm, Java 11, Eclipse</dd>
+                </div>
+              </dl>
+            </div>
+
+            <img
+              class="pd-hero-art"
+              src="../assets/case-studies/todo-list-app/hero.png"
+              alt="To-Do List App — System Design Case Study"
+              data-animated-content
+              data-ac-delay="0.2"
+            />
+          </div>
+        </section>
+
+        <section class="pd-body">
+          <div class="container">
+            <div class="pd-case">
+              <section data-animated-content>
+                <div class="pd-diagram-row pd-overview-row">
+                  <div>
+                    <div class="kicker">Overview</div>
+                    <h2>From requirements to working code</h2>
+                  </div>
+                  <p>
+                    I designed a to-do list app from requirements to working
+                    code. I mapped its functions in a use case diagram, traced
+                    the main flows with activity and sequence diagrams,
+                    structured the data in a class diagram, and applied two
+                    design patterns so the app can grow without rewriting
+                    existing code.
+                  </p>
+                </div>
+
+                <div class="pd-two-col">
+                  <div class="pd-note-card">
+                    <span class="pd-note-label">01 &mdash; The problem</span>
+                    <h3>Tasks pile up faster than notes can keep up</h3>
+                    <p>
+                      Tasks from school, work, and personal life pile up
+                      quickly. Paper notes and manual reminders can't keep up
+                      with changing schedules, and there's no easy way to
+                      prioritize by deadline or urgency. Hobbies often get
+                      forgotten because they're mixed in with obligations.
+                    </p>
+                  </div>
+                  <div class="pd-note-card">
+                    <span class="pd-note-label">02 &mdash; Who it's for</span>
+                    <h3>People managing their own time</h3>
+                    <p>
+                      People who want to manage their time better: students
+                      with many assignments, young professionals juggling
+                      work, and anyone who wants to make room for hobbies.
+                      The app is built for personal use, not for teams or
+                      companies.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section data-animated-content data-ac-delay="0.06">
+                <div class="pd-diagram-row">
+                  <button
+                    type="button"
+                    class="pd-lightbox-trigger pd-diagram-img"
+                    data-full="../assets/case-studies/todo-list-app/usecase-diagram.png"
+                    data-title="Use case diagram: satu aktor User dengan 10 fungsi dalam tiga kelompok Account, Task Management, dan Productivity"
+                  >
+                    <img
+                      src="../assets/case-studies/todo-list-app/usecase-diagram.png"
+                      alt="Use case diagram: satu aktor User dengan 10 fungsi dalam tiga kelompok Account, Task Management, dan Productivity"
+                    />
+                  </button>
+                  <div>
+                    <div class="kicker">Use case diagram</div>
+                    <h2>One actor, 10 core functions, 3 shared sub-functions</h2>
+                    <p>
+                      The system has a single actor, the User, who can
+                      access ten functions in three groups:
+                    </p>
+                    <dl class="pd-usecase-table">
+                      <div>
+                        <dt>Account</dt>
+                        <dd>Register, Login, Logout</dd>
+                      </div>
+                      <div>
+                        <dt>Task management</dt>
+                        <dd>Add, View, Update, Delete</dd>
+                      </div>
+                      <div>
+                        <dt>Productivity</dt>
+                        <dd>Reminder, Sharing, Archive</dd>
+                      </div>
+                    </dl>
+                    <p>
+                      Shared steps such as Insert Task Detail, View All Task
+                      Detail, and Manage Notification are modeled as
+                      included sub-functions, so they're defined once and
+                      reused.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section data-animated-content data-ac-delay="0.12">
+                <div class="kicker">Key flows</div>
+                <h2>How the main features behave</h2>
+                <p>
+                  Activity diagrams show the logic of each flow, while
+                  sequence diagrams show how the View, Controller, and
+                  Database talk to each other.
+                </p>
+                <div class="pd-flow-grid">
+                  <div class="pd-flow-card">
+                    <button
+                      type="button"
+                      class="pd-lightbox-trigger pd-diagram-img"
+                      data-full="../assets/case-studies/todo-list-app/activity-register.png"
+                      data-title="Activity diagram alur Register, swimlane User dan System"
+                    >
+                      <img
+                        src="../assets/case-studies/todo-list-app/activity-register.png"
+                        alt="Activity diagram alur Register, swimlane User dan System"
+                      />
+                    </button>
+                    <span class="pd-flow-type">Activity diagram</span>
+                    <h3>Register</h3>
+                    <p>
+                      Swimlanes separate what the user does from what the
+                      system does. If the username already exists, the user
+                      sees an error and returns to the form. If not, the
+                      system updates the database and shows a success
+                      message in parallel.
+                    </p>
+                  </div>
+                  <div class="pd-flow-card">
+                    <button
+                      type="button"
+                      class="pd-lightbox-trigger pd-diagram-img"
+                      data-full="../assets/case-studies/todo-list-app/activity-add-task.png"
+                      data-title="Activity diagram alur Add Task dengan tiga proses paralel setelah validasi"
+                    >
+                      <img
+                        src="../assets/case-studies/todo-list-app/activity-add-task.png"
+                        alt="Activity diagram alur Add Task dengan tiga proses paralel setelah validasi"
+                      />
+                    </button>
+                    <span class="pd-flow-type">Activity diagram</span>
+                    <h3>Add Task</h3>
+                    <p>
+                      After validation, the system runs three steps at the
+                      same time: checking the deadline, saving to the
+                      database, and preparing a status message. It waits for
+                      all three before confirming success.
+                    </p>
+                  </div>
+                  <div class="pd-flow-card">
+                    <button
+                      type="button"
+                      class="pd-lightbox-trigger pd-diagram-img"
+                      data-full="../assets/case-studies/todo-list-app/sequence-login.png"
+                      data-title="Sequence diagram alur Login: View, Controller, dan AccountDatabase"
+                    >
+                      <img
+                        src="../assets/case-studies/todo-list-app/sequence-login.png"
+                        alt="Sequence diagram alur Login: View, Controller, dan AccountDatabase"
+                      />
+                    </button>
+                    <span class="pd-flow-type">Sequence diagram</span>
+                    <h3>Login</h3>
+                    <p>
+                      Every sequence diagram follows the same View &rarr;
+                      Controller &rarr; Database pattern. The controller
+                      validates the input, then an alt fragment returns
+                      either an error or a success message. The whole
+                      process sits in a loop, so the user can try again.
+                    </p>
+                  </div>
+                  <div class="pd-flow-card">
+                    <button
+                      type="button"
+                      class="pd-lightbox-trigger pd-diagram-img"
+                      data-full="../assets/case-studies/todo-list-app/sequence-task-sharing.png"
+                      data-title="Sequence diagram alur Task Sharing dengan keputusan bertingkat"
+                    >
+                      <img
+                        src="../assets/case-studies/todo-list-app/sequence-task-sharing.png"
+                        alt="Sequence diagram alur Task Sharing dengan keputusan bertingkat"
+                      />
+                    </button>
+                    <span class="pd-flow-type">Sequence diagram</span>
+                    <h3>Task Sharing</h3>
+                    <p>
+                      The most complex flow, and the only one involving a
+                      second person. The user opens the sharing page, loads
+                      all tasks, and shares one by ID. Nested decisions check
+                      whether the task exists and whether the receiver
+                      accepts or rejects it.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section data-animated-content data-ac-delay="0.18">
+                <div class="pd-diagram-row pd-diagram-row-reverse">
+                  <div>
+                    <div class="kicker">Class diagram</div>
+                    <h2>A structure that's easy to extend</h2>
+                    <p>
+                      Task is an abstract class that holds what every task
+                      shares: status and description. Assignment adds a
+                      deadline and priority, while Hobby adds a frequency.
+                      One user can own zero or more tasks. All attributes
+                      are private and accessed through getters and setters,
+                      so new task types can be added without changing
+                      existing classes.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    class="pd-lightbox-trigger pd-diagram-img"
+                    data-full="../assets/case-studies/todo-list-app/class-diagram.png"
+                    data-title="Class diagram: User, Task abstrak, Assignment, dan Hobby"
+                  >
+                    <img
+                      src="../assets/case-studies/todo-list-app/class-diagram.png"
+                      alt="Class diagram: User, Task abstrak, Assignment, dan Hobby"
+                    />
+                  </button>
+                </div>
+              </section>
+
+              <section data-animated-content data-ac-delay="0.24">
+                <div class="kicker">Design patterns</div>
+                <h2>Two patterns that keep the code flexible</h2>
+                <div class="pd-two-col">
+                  <div class="pd-pattern-card">
+                    <button
+                      type="button"
+                      class="pd-lightbox-trigger pd-code-img"
+                      data-full="../assets/case-studies/todo-list-app/code-factory-pattern.png"
+                      data-title="Potongan kode Factory Pattern: TaskFactory, AssignmentFactory, HobbyFactory"
+                    >
+                      <img
+                        src="../assets/case-studies/todo-list-app/code-factory-pattern.png"
+                        alt="Potongan kode Factory Pattern: TaskFactory, AssignmentFactory, HobbyFactory"
+                      />
+                    </button>
+                    <span class="pd-flow-type">Factory Pattern</span>
+                    <h3>Creating tasks without depending on their type</h3>
+                    <p>
+                      Object creation is separated from the app logic. The
+                      app picks the right factory, AssignmentFactory or
+                      HobbyFactory, and calls createTask(). Adding a new task
+                      type only means adding a new factory.
+                    </p>
+                  </div>
+                  <div class="pd-pattern-card">
+                    <button
+                      type="button"
+                      class="pd-lightbox-trigger pd-code-img"
+                      data-full="../assets/case-studies/todo-list-app/code-strategy-pattern.png"
+                      data-title="Potongan kode Strategy Pattern: TaskModificationStrategy, UpdateStatusStrategy, DeleteTaskStrategy"
+                    >
+                      <img
+                        src="../assets/case-studies/todo-list-app/code-strategy-pattern.png"
+                        alt="Potongan kode Strategy Pattern: TaskModificationStrategy, UpdateStatusStrategy, DeleteTaskStrategy"
+                      />
+                    </button>
+                    <span class="pd-flow-type">Strategy Pattern</span>
+                    <h3>Swappable task actions</h3>
+                    <p>
+                      Updating a status and deleting a task are separate
+                      strategies behind one interface,
+                      TaskModificationStrategy. The app only calls modify(),
+                      so new actions like archiving can be added as new
+                      strategies.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section data-animated-content data-ac-delay="0.3">
+                <div class="pd-diagram-row">
+                  <button
+                    type="button"
+                    class="pd-lightbox-trigger pd-code-img pd-code-img-tall"
+                    data-full="../assets/case-studies/todo-list-app/console-demo.png"
+                    data-title="Demo aplikasi konsol Java: membuat akun, menambah tugas, dan memperbarui status"
+                  >
+                    <img
+                      src="../assets/case-studies/todo-list-app/console-demo.png"
+                      alt="Demo aplikasi konsol Java: membuat akun, menambah tugas, dan memperbarui status"
+                    />
+                  </button>
+                  <div>
+                    <div class="kicker">Implementation</div>
+                    <h2>From diagrams to a working Java 11 console app</h2>
+                    <p>
+                      I built the design as a console app in Java 11 using
+                      Eclipse, organized into four packages: models,
+                      factories, strategies, and app. The demo shows
+                      creating an account, adding an Assignment, viewing the
+                      task list, and updating a task's status.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section data-animated-content data-ac-delay="0.36">
+                <h2>What I built, and what I learned</h2>
+                <div class="pd-two-col">
+                  <div class="pd-note-card">
+                    <h3>What I built</h3>
+                    <ul class="pd-check-list">
+                      <li>Account menu: create user, log in, log out, exit</li>
+                      <li>
+                        Task management: add, view, update status, and
+                        delete with confirmation
+                      </li>
+                      <li>Two task types: Assignment and Hobby</li>
+                      <li>Deadline input validation</li>
+                      <li>Factory and Strategy patterns</li>
+                    </ul>
+                  </div>
+                  <div class="pd-note-card">
+                    <h3>What I learned</h3>
+                    <ul class="pd-check-list">
+                      <li>
+                        Keeping use case, activity, and sequence diagrams
+                        consistent makes gaps easier to spot before coding.
+                      </li>
+                      <li>
+                        Design patterns make it easy to add features
+                        without touching other parts of the code.
+                      </li>
+                      <li>
+                        Limiting the scope helped me finish the core
+                        features on time.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section class="pd-body">
+          <div class="container">
+            <div class="pd-final-cta" data-animated-content>
+              <p>Interested in how I approach system design?</p>
+              <p class="pd-final-cta-sub">
+                Open to Frontend Developer, Quality Assurance, System
+                Analyst, and Data Analyst roles.
+              </p>
+              <div class="pd-cta">
+                <a class="btn btn-light" href="../index.html#kontak">Get in touch</a>
+                <a class="btn btn-outline-light" href="kriya-nusantara.html">Next project &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="footer-row">
+          <span>&copy; 2026 portfolio by eugenialaellisahibau</span>
+          <span>Dibangun dengan HTML, CSS &amp; JavaScript murni</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

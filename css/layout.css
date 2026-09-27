@@ -193,6 +193,30 @@ nav.links a:hover {
   color: var(--accent);
 }
 
+/* Dipakai di atas kartu berwarna solid (mis. CTA penutup halaman detail
+   proyek), bukan di atas latar biasa -- makanya warnanya kebalik dari
+   .btn-primary/.btn-ghost. */
+.btn-light {
+  background: var(--on-accent);
+  border-color: var(--on-accent);
+  color: var(--accent);
+}
+
+.btn-light:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px -12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-outline-light {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--on-accent) 55%, transparent);
+  color: var(--on-accent);
+}
+
+.btn-outline-light:hover {
+  border-color: var(--on-accent);
+}
+
 .nav-cta {
   display: flex;
   align-items: center;
