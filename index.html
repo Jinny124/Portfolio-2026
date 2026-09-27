@@ -202,8 +202,7 @@
           <div class="container">
             <div class="section-head" data-animated-content>
               <div class="kicker">Skills</div>
-              <h2>What I do</h2>
-              <p>Four areas I work in. Hover a card to see the skills behind it.</p>
+              <h2>What I focus on, and the skills I bring to each</h2>
             </div>
 
             <!-- Tiap kartu memakai tiga komponen sekaligus:
@@ -215,18 +214,20 @@
             <div class="skills-grid">
               <div class="card-spotlight skill-card" data-animated-content data-spotlight data-tilt>
                 <h3 class="skill-title">Quality Assurance</h3>
-                <p class="skill-desc">
-                  I design and run test cases, track bugs to closure, and check
-                  every browser and device.
-                </p>
-                <ul class="skill-list">
-                  <li>Test case design</li>
-                  <li>Functional testing</li>
-                  <li>Integration testing</li>
-                  <li>Bug tracking</li>
-                  <li>Cross-browser testing</li>
-                </ul>
-                <span class="skill-count">5 skills &rarr;</span>
+                <div class="skill-body">
+                  <p class="skill-desc">
+                    I design and run test cases, track bugs to closure, and check
+                    every browser and device.
+                  </p>
+                  <ul class="skill-list">
+                    <li>Test case design</li>
+                    <li>Functional testing</li>
+                    <li>Integration testing</li>
+                    <li>Bug tracking</li>
+                    <li>Cross-browser testing</li>
+                  </ul>
+                </div>
+                <span class="skill-count">Hover to explore &rarr;</span>
               </div>
 
               <div
@@ -236,19 +237,21 @@
                 data-spotlight
                 data-tilt
               >
-                <h3 class="skill-title">Frontend Development</h3>
-                <p class="skill-desc">
-                  I turn Figma designs into responsive interfaces and have
-                  migrated a full app from Vue.js to Next.js.
-                </p>
-                <ul class="skill-list">
-                  <li>HTML &amp; CSS</li>
-                  <li>JavaScript</li>
-                  <li>Next.js &amp; Vue.js</li>
-                  <li>React Native</li>
-                  <li>Bootstrap</li>
-                </ul>
-                <span class="skill-count">5 skills &rarr;</span>
+                <h3 class="skill-title">System Analysis</h3>
+                <div class="skill-body">
+                  <p class="skill-desc">
+                    I turn user needs into clear requirements, use cases, and
+                    diagrams a team can build from.
+                  </p>
+                  <ul class="skill-list">
+                    <li>Requirements analysis</li>
+                    <li>Use cases</li>
+                    <li>User flows</li>
+                    <li>UML diagrams</li>
+                    <li>UI prototyping</li>
+                  </ul>
+                </div>
+                <span class="skill-count">Hover to explore &rarr;</span>
               </div>
 
               <div
@@ -258,19 +261,21 @@
                 data-spotlight
                 data-tilt
               >
-                <h3 class="skill-title">System Analysis</h3>
-                <p class="skill-desc">
-                  I turn user needs into clear requirements, use cases, and
-                  diagrams a team can build from.
-                </p>
-                <ul class="skill-list">
-                  <li>Requirements analysis</li>
-                  <li>Use cases</li>
-                  <li>User flows</li>
-                  <li>UML diagrams</li>
-                  <li>UI prototyping</li>
-                </ul>
-                <span class="skill-count">5 skills &rarr;</span>
+                <h3 class="skill-title">Frontend Development</h3>
+                <div class="skill-body">
+                  <p class="skill-desc">
+                    I turn Figma designs into responsive interfaces and have
+                    migrated a full app from Vue.js to Next.js.
+                  </p>
+                  <ul class="skill-list">
+                    <li>HTML &amp; CSS</li>
+                    <li>JavaScript</li>
+                    <li>Next.js &amp; Vue.js</li>
+                    <li>React Native</li>
+                    <li>Bootstrap</li>
+                  </ul>
+                </div>
+                <span class="skill-count">Hover to explore &rarr;</span>
               </div>
 
               <div
@@ -281,18 +286,20 @@
                 data-tilt
               >
                 <h3 class="skill-title">Data &amp; API Validation</h3>
-                <p class="skill-desc">
-                  I query databases and test APIs to make sure the data behind
-                  every feature is correct.
-                </p>
-                <ul class="skill-list">
-                  <li>SQL queries</li>
-                  <li>API testing</li>
-                  <li>Data validation</li>
-                  <li>MongoDB</li>
-                  <li>Data visualization</li>
-                </ul>
-                <span class="skill-count">5 skills &rarr;</span>
+                <div class="skill-body">
+                  <p class="skill-desc">
+                    I query databases and test APIs to make sure the data behind
+                    every feature is correct.
+                  </p>
+                  <ul class="skill-list">
+                    <li>SQL queries</li>
+                    <li>API testing</li>
+                    <li>Data validation</li>
+                    <li>MongoDB</li>
+                    <li>Data visualization</li>
+                  </ul>
+                </div>
+                <span class="skill-count">Hover to explore &rarr;</span>
               </div>
             </div>
 
@@ -301,7 +308,6 @@
                  Logo Navicat berupa PNG (dipotong dari gambar yang diberikan);
                  logo lain berupa SVG. -->
             <div class="toolbox-strip" data-animated-content data-ac-delay="0.3">
-              <span class="toolbox-label">Tools I use</span>
               <div class="tools-marquee">
                 <div class="tools-track">
                   <ul class="tools-group">
@@ -345,15 +351,11 @@
               <div class="section-head-row">
                 <div class="section-head">
                   <div class="kicker">Projects</div>
-                  <h2>Selected projects</h2>
+                  <h2>Projects I've worked on</h2>
                 </div>
 
                 <a class="section-see-all" href="projects.html">See all &rarr;</a>
               </div>
-              <p class="section-lede">
-                A selection of work I've analyzed, tested, and built, from
-                system requirements to research.
-              </p>
             </div>
 
             <!-- data-caption mengaktifkan tooltip bawaan TiltedCard.
@@ -364,29 +366,6 @@
                 class="card-spotlight project-card"
                 href="#"
                 data-animated-content
-                data-spotlight="accent"
-                data-tilt
-                data-caption="SplitBill App"
-              >
-                <div class="project-tags">
-                  <span class="pill featured">System Analysis</span>
-                  <span class="pill">QA</span>
-                  <span class="pill">Frontend</span>
-                </div>
-                <h3>SplitBill App</h3>
-                <p class="desc">
-                  A bill-splitting app for Android, iOS, and Web. I wrote 17
-                  use cases and 6 user flows, designed the UI in Figma, and
-                  manually tested the split calculations.
-                </p>
-                <span class="project-link">View case study &rarr;</span>
-              </a>
-
-              <a
-                class="card-spotlight project-card"
-                href="#"
-                data-animated-content
-                data-ac-delay="0.06"
                 data-spotlight="accent"
                 data-tilt
                 data-caption="Analysis System Design"
@@ -407,29 +386,7 @@
                 class="card-spotlight project-card"
                 href="#"
                 data-animated-content
-                data-ac-delay="0.12"
-                data-spotlight="accent"
-                data-tilt
-                data-caption="Thesis"
-              >
-                <div class="project-tags">
-                  <span class="pill">Research</span>
-                  <span class="pill">Data</span>
-                </div>
-                <h3>Breast Cancer Drug Sensitivity Prediction (Thesis)</h3>
-                <p class="desc">
-                  Undergraduate thesis predicting drug sensitivity using
-                  miRNA-derived graph representations and Graph Neural
-                  Networks.
-                </p>
-                <span class="project-link">Read paper &rarr;</span>
-              </a>
-
-              <a
-                class="card-spotlight project-card"
-                href="#"
-                data-animated-content
-                data-ac-delay="0.18"
+                data-ac-delay="0.06"
                 data-spotlight="accent"
                 data-tilt
                 data-caption="PT Kriya Nusantara Sejahtera"
@@ -444,6 +401,45 @@
                 </p>
                 <span class="project-link">Visit site &rarr;</span>
               </a>
+
+              <a
+                class="card-spotlight project-card"
+                href="#"
+                data-animated-content
+                data-ac-delay="0.12"
+                data-spotlight="accent"
+                data-tilt
+                data-caption="Healthify"
+              >
+                <div class="project-tags">
+                  <span class="pill">Web Development</span>
+                </div>
+                <h3>Healthify</h3>
+                <p class="desc">
+                  A health forum web app built with PHP/Laravel, with login,
+                  threads &amp; comments (CRUD), search, and a translator.
+                </p>
+                <span class="project-link">View on GitHub &rarr;</span>
+              </a>
+
+              <a
+                class="card-spotlight project-card"
+                href="#"
+                data-animated-content
+                data-ac-delay="0.18"
+                data-spotlight="accent"
+                data-tilt
+                data-caption="Digital Invitation"
+              >
+                <div class="project-tags">
+                  <span class="pill">Web Development</span>
+                </div>
+                <h3>Digital Invitation</h3>
+                <p class="desc">
+                  A digital invitation website, deployed on Vercel.
+                </p>
+                <span class="project-link">Visit site &rarr;</span>
+              </a>
             </div>
           </div>
         </section>
@@ -455,15 +451,11 @@
               <div class="section-head-row">
                 <div class="section-head">
                   <div class="kicker">Certifications</div>
-                  <h2>Certifications &amp; training</h2>
+                  <h2>Courses and certifications I've completed</h2>
                 </div>
 
                 <a class="section-see-all" href="certificates.html">See all &rarr;</a>
               </div>
-              <p class="section-lede">
-                Courses I've completed to sharpen my analysis, data, and
-                development skills.
-              </p>
             </div>
 
             <!-- Kerangka kosong. Isi tiap kartu dengan sertifikat asli:
@@ -636,9 +628,9 @@
                 <!-- React Bits: GradientText -->
                 <h2>Let's work <span id="grad-terhubung">together</span></h2>
                 <p>
-                  I'm open to Quality Assurance, System Analyst, and Data Analyst
-                  roles. Whether you're hiring or just want to talk about a project,
-                  feel free to reach out.
+                  I'm open to Quality Assurance, System Analyst, Frontend Developer
+                  and Data Analyst roles. Whether you're hiring or just want to talk
+                  about a project, feel free to reach out.
                 </p>
               </div>
 

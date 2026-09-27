@@ -121,6 +121,25 @@
 
 /* ---------------- Keahlian ---------------- */
 
+/* Judul section ini panjang ("What I focus on, and the skills I bring to
+   each") dan section-head lain gak punya subheadline lagi di sini, jadi
+   batas lebar 570px (yang gunanya membatasi lebar paragraf) dilepas
+   supaya judulnya muat satu baris. */
+#keahlian .section-head {
+  max-width: none;
+}
+
+#keahlian .section-head h2 {
+  font-size: clamp(22.4px, 2.6vw, 32px);
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  #keahlian .section-head h2 {
+    white-space: normal;
+  }
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -147,32 +166,54 @@
   font-weight: 600;
 }
 
-.skill-desc {
+/* .skill-desc dan .skill-list ditumpuk di sel grid yang sama (bukan
+   dipasang/dilepas lewat display), jadi keduanya sama-sama ikut
+   menentukan tinggi .skill-body -- tinggi kartu jadi tetap sama baik
+   di-hover maupun tidak, tidak ada lompatan ukuran. Yang berubah cuma
+   opacity/visibility. */
+.skill-body {
+  position: relative;
+  display: grid;
   margin-top: 8px;
+}
+
+.skill-body > * {
+  grid-area: 1 / 1;
+}
+
+.skill-desc {
   font-size: 14px;
   line-height: 1.6;
   color: var(--text-muted);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease;
 }
 
 .skill-card:hover .skill-desc {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
 }
 
 /* Daftar keahlian bercentang, cuma tampil saat kartu di-hover -- lihat
    .skill-card:hover .skill-list di bawah. Tanda centang dibuat lewat
    ::before, bukan <svg> per item, supaya markup-nya tetap teks polos. */
 .skill-list {
-  display: none;
-  margin: 8px 0 0;
-  padding: 0;
-  list-style: none;
-  font-size: 13.5px;
-}
-
-.skill-card:hover .skill-list {
   display: flex;
   flex-direction: column;
   gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13.5px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+}
+
+.skill-card:hover .skill-list {
+  opacity: 1;
+  visibility: visible;
 }
 
 .skill-list li {
@@ -203,7 +244,7 @@
 }
 
 .skill-card:hover .skill-count {
-  color: color-mix(in srgb, var(--on-accent) 85%, transparent);
+  visibility: hidden;
 }
 
 /* satu baris ringkas di bawah keempat kartu, bukan diulang per kartu */
@@ -427,6 +468,22 @@
   margin-bottom: 14px;
 }
 
+/* Projects dan Certifications tidak punya paragraf subheadline lagi
+   (section-lede) di bawah judulnya, jadi baris judul ini sendiri yang
+   perlu menjaga jarak ke grid kartu -- disamakan dengan jarak
+   .section-head (Skills) ke grid-nya. */
+#proyek .section-head-row,
+#sertifikat .section-head-row {
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+/* Judulnya cukup panjang untuk kebentur max-width 570px bawaan
+   .section-head, jadi dilepas di sini supaya muat satu baris (sama
+   seperti perlakuan h2 Skills). */
+#sertifikat .section-head-row .section-head {
+  max-width: none;
+}
+
 .section-head-row .section-head {
   margin-bottom: 0;
 }
@@ -499,46 +556,6 @@
 
 .cert-card:hover .cert-thumb img {
   transform: scale(1.04);
-}
-
-/* Petunjuk bahwa gambar bisa diklik. Kursor zoom-in saja tidak cukup:
-   di layar sentuh tidak ada kursor sama sekali. */
-.cert-thumb::after {
-  content: 'Perbesar';
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  padding: 5px 11px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--bg) 80%, transparent);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.44px; /* 0.04em pada 11px, .cert-thumb::after */
-  color: var(--text);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  pointer-events: none;
-}
-
-.cert-thumb:hover::after,
-.cert-thumb:focus-visible::after {
-  opacity: 1;
-}
-
-/* Tanpa hover, petunjuknya ditampilkan terus. */
-@media (hover: none) {
-  .cert-thumb::after {
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cert-thumb::after {
-    transition: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
