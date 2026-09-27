@@ -42,6 +42,12 @@
   color: var(--text-muted);
 }
 
+/* Halaman detail ringkas (belum ada Masalah/Pendekatan/Hasil): CTA
+   kontak langsung di bawah ringkasan, bukan di aside .pd-side. */
+.pd-hero > .container > .btn {
+  margin-top: 28px;
+}
+
 /* ---------------- baris hero: judul di kiri, meta di kanan ---------------- */
 
 .pd-hero-row {
