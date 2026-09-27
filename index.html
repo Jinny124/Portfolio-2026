@@ -203,12 +203,15 @@
             <div class="section-head" data-animated-content>
               <div class="kicker">Skills</div>
               <h2>What I do</h2>
-              <p>Four areas I work in, and the tools I use for each.</p>
+              <p>Four areas I work in. Hover a card to see the skills behind it.</p>
             </div>
 
             <!-- Tiap kartu memakai tiga komponen sekaligus:
                  AnimatedContent (masuk saat di-scroll), SpotlightCard (sorot
-                 mengikuti kursor), dan TiltedCard (miring 3D saat hover). -->
+                 mengikuti kursor), dan TiltedCard (miring 3D saat hover).
+                 .skill-desc tampil normal; .skill-list (baru muncul saat
+                 di-hover, lihat sections.css) menggantikannya dengan daftar
+                 keahlian bercentang -- datanya sama, cuma tampilannya beda. -->
             <div class="skills-grid">
               <div class="card-spotlight skill-card" data-animated-content data-spotlight data-tilt>
                 <h3 class="skill-title">Quality Assurance</h3>
@@ -216,13 +219,14 @@
                   I design and run test cases, track bugs to closure, and check
                   every browser and device.
                 </p>
-                <div class="skill-tags">
-                  <span class="pill">Test case design</span>
-                  <span class="pill">Functional testing</span>
-                  <span class="pill">Integration testing</span>
-                  <span class="pill">Bug tracking</span>
-                  <span class="pill">Cross-browser testing</span>
-                </div>
+                <ul class="skill-list">
+                  <li>Test case design</li>
+                  <li>Functional testing</li>
+                  <li>Integration testing</li>
+                  <li>Bug tracking</li>
+                  <li>Cross-browser testing</li>
+                </ul>
+                <span class="skill-count">5 skills &rarr;</span>
               </div>
 
               <div
@@ -237,14 +241,14 @@
                   I turn Figma designs into responsive interfaces and have
                   migrated a full app from Vue.js to Next.js.
                 </p>
-                <div class="skill-tags">
-                  <span class="pill">HTML &amp; CSS</span>
-                  <span class="pill">JavaScript</span>
-                  <span class="pill">Next.js</span>
-                  <span class="pill">Vue.js</span>
-                  <span class="pill">React Native</span>
-                  <span class="pill">Bootstrap</span>
-                </div>
+                <ul class="skill-list">
+                  <li>HTML &amp; CSS</li>
+                  <li>JavaScript</li>
+                  <li>Next.js &amp; Vue.js</li>
+                  <li>React Native</li>
+                  <li>Bootstrap</li>
+                </ul>
+                <span class="skill-count">5 skills &rarr;</span>
               </div>
 
               <div
@@ -259,13 +263,14 @@
                   I turn user needs into clear requirements, use cases, and
                   diagrams a team can build from.
                 </p>
-                <div class="skill-tags">
-                  <span class="pill">Requirements analysis</span>
-                  <span class="pill">Use cases</span>
-                  <span class="pill">User flows</span>
-                  <span class="pill">UML diagrams</span>
-                  <span class="pill">UI prototyping</span>
-                </div>
+                <ul class="skill-list">
+                  <li>Requirements analysis</li>
+                  <li>Use cases</li>
+                  <li>User flows</li>
+                  <li>UML diagrams</li>
+                  <li>UI prototyping</li>
+                </ul>
+                <span class="skill-count">5 skills &rarr;</span>
               </div>
 
               <div
@@ -280,13 +285,14 @@
                   I query databases and test APIs to make sure the data behind
                   every feature is correct.
                 </p>
-                <div class="skill-tags">
-                  <span class="pill">SQL queries</span>
-                  <span class="pill">API testing</span>
-                  <span class="pill">Data validation</span>
-                  <span class="pill">MongoDB</span>
-                  <span class="pill">Data visualization</span>
-                </div>
+                <ul class="skill-list">
+                  <li>SQL queries</li>
+                  <li>API testing</li>
+                  <li>Data validation</li>
+                  <li>MongoDB</li>
+                  <li>Data visualization</li>
+                </ul>
+                <span class="skill-count">5 skills &rarr;</span>
               </div>
             </div>
 
