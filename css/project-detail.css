@@ -477,10 +477,15 @@
   color: var(--on-accent);
 }
 
+/* Tinggi tetap 340px di semua tab -- tanpa ini, tinggi panel ikut
+   rasio gambar tiap tab (diagram landscape lebar seperti sequence
+   login jadi jauh lebih pendek daripada yang lain), jadi ukuran
+   panelnya kelihatan beda-beda saat ganti tab. */
 .pd-flow-panel {
   display: grid;
   grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
   align-items: center;
+  height: 340px;
   margin-top: 24px;
   border: 1px solid var(--border);
   border-radius: var(--radius-l);
@@ -492,7 +497,7 @@
 .pd-flow-panel .pd-flow-panel-img {
   display: block;
   width: 100%;
-  max-height: 340px;
+  height: 100%;
   padding: 0;
   border: none;
   background: var(--surface-2);
@@ -537,9 +542,11 @@
 @media (max-width: 700px) {
   .pd-flow-panel {
     grid-template-columns: 1fr;
+    height: auto;
   }
 
   .pd-flow-panel .pd-flow-panel-img {
+    height: auto;
     aspect-ratio: 4 / 3;
   }
 }
