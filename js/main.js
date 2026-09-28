@@ -205,6 +205,36 @@ document.addEventListener('click', (event) => {
 // di frame yang sudah bisa menggambar. Kalau percobaan pertama sudah
 // berhasil (kasus normal), sisa percobaan cuma menegaskan ulang posisi
 // yang sama, tidak berdampak apa pun.
+/* ---------------- navigasi: sorot tautan sesuai section yang terlihat ---------------- */
+
+const navLinks = [...document.querySelectorAll('nav.links a[href^="#"]')];
+const navSectionMap = new Map();
+for (const link of navLinks) {
+  const section = document.getElementById(link.getAttribute('href').slice(1));
+  if (section) navSectionMap.set(section, link);
+}
+
+function setActiveNavLink(activeLink) {
+  for (const link of navLinks) link.classList.toggle('is-active', link === activeLink);
+}
+
+// Tentang jadi sorotan bawaan (hero di atasnya belum punya tautan sendiri).
+if (navLinks[0]) setActiveNavLink(navLinks[0]);
+
+if (navSectionMap.size && 'IntersectionObserver' in window) {
+  const navObserver = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) setActiveNavLink(navSectionMap.get(entry.target));
+      }
+    },
+    // Pita tipis di 35% dari atas viewport: section "aktif" adalah yang
+    // sedang melewati pita itu saat digulir, bukan yang sekadar terlihat.
+    { rootMargin: '-35% 0px -55% 0px', threshold: 0 }
+  );
+  for (const section of navSectionMap.keys()) navObserver.observe(section);
+}
+
 if (location.hash) {
   const id = location.hash.slice(1);
   history.replaceState(null, '', location.pathname + location.search);
