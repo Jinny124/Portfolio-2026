@@ -240,13 +240,62 @@
                 <p>
                   Activity diagrams show the logic of each flow, while
                   sequence diagrams show how the View, Controller, and
-                  Database talk to each other.
+                  Database talk to each other. Select a flow to see its
+                  diagram.
                 </p>
-                <div class="pd-flow-grid">
-                  <div class="pd-flow-card">
+
+                <div class="pd-flow-tabs">
+                  <div class="pd-flow-tablist" role="tablist">
                     <button
                       type="button"
-                      class="pd-lightbox-trigger pd-diagram-img"
+                      class="pd-flow-tab is-active"
+                      role="tab"
+                      aria-selected="true"
+                      data-name="Register"
+                      data-type="Activity diagram"
+                      data-img="../assets/case-studies/todo-list-app/activity-register.png"
+                      data-alt="Activity diagram alur Register, swimlane User dan System"
+                      data-desc="Swimlanes separate what the user does from what the system does. If the username already exists, the user sees an error and returns to the form. If not, the system updates the database and shows a success message in parallel."
+                    ><span class="pd-flow-tab-num">01</span> Register</button>
+                    <button
+                      type="button"
+                      class="pd-flow-tab"
+                      role="tab"
+                      aria-selected="false"
+                      data-name="Add Task"
+                      data-type="Activity diagram"
+                      data-img="../assets/case-studies/todo-list-app/activity-add-task.png"
+                      data-alt="Activity diagram alur Add Task dengan tiga proses paralel setelah validasi"
+                      data-desc="After validation, the system runs three steps at the same time: checking the deadline, saving to the database, and preparing a status message. It waits for all three before confirming success."
+                    ><span class="pd-flow-tab-num">02</span> Add Task</button>
+                    <button
+                      type="button"
+                      class="pd-flow-tab"
+                      role="tab"
+                      aria-selected="false"
+                      data-name="Login"
+                      data-type="Sequence diagram"
+                      data-img="../assets/case-studies/todo-list-app/sequence-login.png"
+                      data-alt="Sequence diagram alur Login: View, Controller, dan AccountDatabase"
+                      data-desc="Every sequence diagram follows the same View → Controller → Database pattern. The controller validates the input, then an alt fragment returns either an error or a success message. The whole process sits in a loop, so the user can try again."
+                    ><span class="pd-flow-tab-num">03</span> Login</button>
+                    <button
+                      type="button"
+                      class="pd-flow-tab"
+                      role="tab"
+                      aria-selected="false"
+                      data-name="Task Sharing"
+                      data-type="Sequence diagram"
+                      data-img="../assets/case-studies/todo-list-app/sequence-task-sharing.png"
+                      data-alt="Sequence diagram alur Task Sharing dengan keputusan bertingkat"
+                      data-desc="The most complex flow, and the only one involving a second person. The user opens the sharing page, loads all tasks, and shares one by ID. Nested decisions check whether the task exists and whether the receiver accepts or rejects it."
+                    ><span class="pd-flow-tab-num">04</span> Task Sharing</button>
+                  </div>
+
+                  <div class="pd-flow-panel">
+                    <button
+                      type="button"
+                      class="pd-lightbox-trigger pd-flow-panel-img"
                       data-full="../assets/case-studies/todo-list-app/activity-register.png"
                       data-title="Activity diagram alur Register, swimlane User dan System"
                     >
@@ -255,81 +304,19 @@
                         alt="Activity diagram alur Register, swimlane User dan System"
                       />
                     </button>
-                    <span class="pd-flow-type">Activity diagram</span>
-                    <h3>Register</h3>
-                    <p>
-                      Swimlanes separate what the user does from what the
-                      system does. If the username already exists, the user
-                      sees an error and returns to the form. If not, the
-                      system updates the database and shows a success
-                      message in parallel.
-                    </p>
+                    <div class="pd-flow-panel-text">
+                      <span class="pill">Activity diagram</span>
+                      <h3>Register</h3>
+                      <p>
+                        Swimlanes separate what the user does from what the
+                        system does. If the username already exists, the
+                        user sees an error and returns to the form. If not,
+                        the system updates the database and shows a success
+                        message in parallel.
+                      </p>
+                    </div>
                   </div>
-                  <div class="pd-flow-card">
-                    <button
-                      type="button"
-                      class="pd-lightbox-trigger pd-diagram-img"
-                      data-full="../assets/case-studies/todo-list-app/activity-add-task.png"
-                      data-title="Activity diagram alur Add Task dengan tiga proses paralel setelah validasi"
-                    >
-                      <img
-                        src="../assets/case-studies/todo-list-app/activity-add-task.png"
-                        alt="Activity diagram alur Add Task dengan tiga proses paralel setelah validasi"
-                      />
-                    </button>
-                    <span class="pd-flow-type">Activity diagram</span>
-                    <h3>Add Task</h3>
-                    <p>
-                      After validation, the system runs three steps at the
-                      same time: checking the deadline, saving to the
-                      database, and preparing a status message. It waits for
-                      all three before confirming success.
-                    </p>
-                  </div>
-                  <div class="pd-flow-card">
-                    <button
-                      type="button"
-                      class="pd-lightbox-trigger pd-diagram-img"
-                      data-full="../assets/case-studies/todo-list-app/sequence-login.png"
-                      data-title="Sequence diagram alur Login: View, Controller, dan AccountDatabase"
-                    >
-                      <img
-                        src="../assets/case-studies/todo-list-app/sequence-login.png"
-                        alt="Sequence diagram alur Login: View, Controller, dan AccountDatabase"
-                      />
-                    </button>
-                    <span class="pd-flow-type">Sequence diagram</span>
-                    <h3>Login</h3>
-                    <p>
-                      Every sequence diagram follows the same View &rarr;
-                      Controller &rarr; Database pattern. The controller
-                      validates the input, then an alt fragment returns
-                      either an error or a success message. The whole
-                      process sits in a loop, so the user can try again.
-                    </p>
-                  </div>
-                  <div class="pd-flow-card">
-                    <button
-                      type="button"
-                      class="pd-lightbox-trigger pd-diagram-img"
-                      data-full="../assets/case-studies/todo-list-app/sequence-task-sharing.png"
-                      data-title="Sequence diagram alur Task Sharing dengan keputusan bertingkat"
-                    >
-                      <img
-                        src="../assets/case-studies/todo-list-app/sequence-task-sharing.png"
-                        alt="Sequence diagram alur Task Sharing dengan keputusan bertingkat"
-                      />
-                    </button>
-                    <span class="pd-flow-type">Sequence diagram</span>
-                    <h3>Task Sharing</h3>
-                    <p>
-                      The most complex flow, and the only one involving a
-                      second person. The user opens the sharing page, loads
-                      all tasks, and shares one by ID. Nested decisions check
-                      whether the task exists and whether the receiver
-                      accepts or rejects it.
-                    </p>
-                  </div>
+
                 </div>
               </section>
 
