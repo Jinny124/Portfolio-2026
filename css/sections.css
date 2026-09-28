@@ -456,6 +456,24 @@
   gap: 22px;
 }
 
+/* Cuplikan 4 sertifikat di beranda: satu baris penuh, bukan ikut lebar
+   minimum .certs-grid biasa (yang bikin kartu ke-4 turun baris). */
+.certs-grid-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .certs-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .certs-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Baris kepala section Sertifikat/Projects: judul di kiri, tautan "See
    all" di pojok kanan (baris ini sendiri tidak dibatasi max-width, beda
    dari .section-head, supaya tautannya sampai ke tepi kanan container),

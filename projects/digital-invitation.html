@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Studi kasus: website undangan digital yang di-deploy di Vercel."
+      content="Studi kasus: website undangan digital untuk perayaan 25 tahun pernikahan, di-deploy di Vercel."
     />
     <title>Digital Invitation — Eugenia Laellisa Hibau</title>
 
@@ -18,6 +18,12 @@
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Karla:wght@400;500;600;700&family=Fragment+Mono&display=swap"
+    />
+    <!-- Font asli situs undangannya sendiri, dipakai di dalam mockup ponsel
+         (.pd-phone) supaya replikanya benar-benar sama, bukan cuma layout. -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap"
     />
 
     <link rel="stylesheet" href="../css/tokens.css" />
@@ -42,11 +48,11 @@
           <a href="../index.html#top" class="logo">eugenia<span>.</span></a>
 
           <nav class="links">
-            <a href="../index.html#tentang">Tentang</a>
-            <a href="../index.html#keahlian">Keahlian</a>
+            <a href="../index.html#tentang">About</a>
+            <a href="../index.html#keahlian">Skills</a>
             <a href="../index.html#proyek">Projects</a>
-            <a href="../index.html#sertifikat">Sertifikat</a>
-            <a href="../index.html#kontak">Kontak</a>
+            <a href="../index.html#sertifikat">Certifications</a>
+            <a href="../index.html#kontak">Contact</a>
           </nav>
 
           <div class="nav-cta">
@@ -85,25 +91,368 @@
               </svg>
             </button>
 
-            <a class="btn btn-primary" href="../index.html#kontak">Hubungi Saya</a>
+            <a class="btn btn-primary" href="../index.html#kontak">Get in Touch</a>
           </div>
         </div>
       </header>
 
       <main>
         <section class="pd-hero">
-          <div class="container">
-            <h1 data-animated-content>Digital Invitation</h1>
-            <p class="pd-summary" data-animated-content>
-              A digital invitation website, deployed on Vercel.
-            </p>
-            <a
-              class="btn btn-primary"
-              href="../index.html#kontak"
+          <div class="container pd-hero-row">
+            <div class="pd-intro">
+              <div class="project-tags" data-animated-content>
+                <span class="pill">Web Development</span>
+              </div>
+
+              <h1 data-animated-content data-ac-delay="0.04">Digital Invitation Website</h1>
+              <p class="pd-summary" data-animated-content data-ac-delay="0.08">
+                A mobile-first digital invitation for a 25th wedding
+                anniversary vow renewal, with a personalized guest name, live
+                countdown, love story timeline, gallery, and map.
+              </p>
+
+              <div class="pd-cta" data-animated-content data-ac-delay="0.12">
+                <a
+                  class="btn btn-primary"
+                  href="https://invitation-delta-pink.vercel.app/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Visit live site
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M7 17 17 7" />
+                    <path d="M7 7h10v10" />
+                  </svg>
+                </a>
+              </div>
+
+              <dl class="pd-stats" data-animated-content data-ac-delay="0.16">
+                <div>
+                  <dt>Type</dt>
+                  <dd>Personal project</dd>
+                </div>
+                <div>
+                  <dt>Role</dt>
+                  <dd>Frontend Developer</dd>
+                </div>
+                <div>
+                  <dt>Stack</dt>
+                  <dd>HTML, CSS, JavaScript, Bootstrap 5</dd>
+                </div>
+                <div>
+                  <dt>Hosting</dt>
+                  <dd>Vercel</dd>
+                </div>
+              </dl>
+            </div>
+
+            <img
+              class="pd-hero-art pd-hero-art-square"
+              src="../assets/case-studies/digital-invitation/hero.webp"
+              alt="Digital Invitation — tiga tampilan ponsel: countdown, opening screen Andi &amp; Sari, dan gallery"
               data-animated-content
-              data-ac-delay="0.08"
-              >Diskusikan proyek serupa</a
-            >
+              data-ac-delay="0.2"
+            />
+          </div>
+        </section>
+
+        <section class="pd-body">
+          <div class="container">
+            <div class="pd-case">
+              <section data-animated-content>
+                <div class="pd-diagram-row pd-overview-row">
+                  <div>
+                    <div class="kicker">Overview</div>
+                    <h2>An invitation guests can open, not just read</h2>
+                  </div>
+                  <p>
+                    I designed and built a one-page digital invitation for a
+                    silver anniversary celebration. Guests open a personal
+                    link, tap to open the invitation, and scroll through the
+                    event details, the couple's story, a photo gallery, and
+                    directions to the venue, all with background music.
+                  </p>
+                </div>
+              </section>
+
+              <section data-animated-content data-ac-delay="0.06">
+                <div class="kicker">Screens</div>
+                <h2>Designed for phones first</h2>
+                <p>
+                  Most guests open invitations from a chat app, so every
+                  section was laid out for a phone screen.
+                </p>
+
+                <div class="pd-screens-row">
+                  <div class="pd-screen-item">
+                    <div class="pd-phone pd-phone-mini">
+                      <div class="pd-phone-screen pd-mini-opening">
+                        <span class="pd-mini-bar short"></span>
+                        <p class="pd-mini-script">Andi &amp; Sari</p>
+                        <span class="pd-mini-pill">BUKA</span>
+                      </div>
+                    </div>
+                    <span class="pd-screen-caption">Opening screen</span>
+                  </div>
+
+                  <div class="pd-screen-item">
+                    <div class="pd-phone pd-phone-mini">
+                      <div class="pd-phone-screen pd-mini-countdown">
+                        <span class="pd-mini-bar short"></span>
+                        <div class="pd-mini-circles">
+                          <span></span><span></span><span></span><span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="pd-screen-caption">Countdown</span>
+                  </div>
+
+                  <div class="pd-screen-item">
+                    <div class="pd-phone pd-phone-mini">
+                      <div class="pd-phone-screen pd-mini-date">
+                        <div class="pd-mini-icon"></div>
+                        <div class="pd-mini-card">
+                          <span class="pd-mini-bar"></span>
+                          <span class="pd-mini-bar short"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="pd-screen-caption">Event details</span>
+                  </div>
+
+                  <div class="pd-screen-item">
+                    <div class="pd-phone pd-phone-mini">
+                      <div class="pd-phone-screen pd-mini-love">
+                        <div class="pd-mini-timeline">
+                          <span></span><span></span><span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="pd-screen-caption">Love story</span>
+                  </div>
+
+                  <div class="pd-screen-item">
+                    <div class="pd-phone pd-phone-mini">
+                      <div class="pd-phone-screen pd-mini-gallery">
+                        <div class="pd-mini-grid">
+                          <span></span><span></span><span></span><span></span>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="pd-screen-caption">Gallery</span>
+                  </div>
+                </div>
+              </section>
+
+              <section data-animated-content data-ac-delay="0.12">
+                <div class="kicker">Key features</div>
+                <h2>What guests can do</h2>
+
+                <div class="pd-feature-grid">
+                  <div class="pd-feature-card">
+                    <div class="pd-feature-icon">
+                      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 21a8 8 0 0 0-16 0" />
+                        <circle cx="12" cy="7" r="4" />
+                      </svg>
+                    </div>
+                    <h3>Personalized guest name</h3>
+                    <p>
+                      Each guest gets their own link. The name is read from
+                      the URL (?to=Name), with "Bapak/Ibu/Saudara/i" as the
+                      fallback.
+                    </p>
+                  </div>
+
+                  <div class="pd-feature-card">
+                    <div class="pd-feature-icon">
+                      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="5" width="18" height="14" rx="2" />
+                        <path d="m3 7 9 6 9-6" />
+                      </svg>
+                    </div>
+                    <h3>Opening experience</h3>
+                    <p>
+                      The page stays locked on the cover until the guest taps
+                      "Buka Undangan". Then the music starts and the page
+                      scrolls smoothly to the content.
+                    </p>
+                  </div>
+
+                  <div class="pd-feature-card">
+                    <div class="pd-feature-icon">
+                      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 7v5l3 3" />
+                      </svg>
+                    </div>
+                    <h3>Live countdown</h3>
+                    <p>
+                      Days, hours, minutes, and seconds update every second,
+                      and switch to a message once the day arrives.
+                    </p>
+                  </div>
+
+                  <div class="pd-feature-card">
+                    <div class="pd-feature-icon">
+                      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="4" width="18" height="17" rx="2" />
+                        <path d="M3 9h18M8 3v3M16 3v3" />
+                      </svg>
+                    </div>
+                    <h3>Event details</h3>
+                    <p>
+                      Separate cards for the ceremony and the reception, each
+                      with date, time, and place.
+                    </p>
+                  </div>
+
+                  <div class="pd-feature-card">
+                    <div class="pd-feature-icon">
+                      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z" />
+                      </svg>
+                    </div>
+                    <h3>Love story &amp; gallery</h3>
+                    <p>
+                      A vertical timeline of milestones from 1998 to today,
+                      followed by a photo gallery.
+                    </p>
+                  </div>
+
+                  <div class="pd-feature-card">
+                    <div class="pd-feature-icon">
+                      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>
+                    </div>
+                    <h3>Location &amp; music</h3>
+                    <p>
+                      An embedded Google Map with an "Open Google Maps"
+                      button, plus a floating button to play or pause the
+                      music.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section data-animated-content data-ac-delay="0.18">
+                <div class="pd-diagram-row">
+                  <div class="pd-code-box">
+                    <div class="pd-code-dots"><span></span><span></span><span></span></div>
+                    <div class="pd-code-tree">
+                      <p class="pd-code-file">invitation/</p>
+                      <p><span class="pd-code-dot">&#9679;</span> index.html</p>
+                      <p><span class="pd-code-dot">&#9679;</span> sections/home.html</p>
+                      <p><span class="pd-code-dot">&#9679;</span> sections/countdown.html</p>
+                      <p><span class="pd-code-dot">&#9679;</span> sections/date.html</p>
+                      <p><span class="pd-code-dot">&#9679;</span> sections/lovestory.html</p>
+                      <p><span class="pd-code-dot">&#9679;</span> sections/gallery.html</p>
+                      <p><span class="pd-code-dot">&#9679;</span> js/script.js</p>
+                      <p><span class="pd-code-dot">&#9679;</span> css/style.css</p>
+                      <p><span class="pd-code-dot">&#9679;</span> audio/goodness-of-god.mp3</p>
+                    </div>
+                    <p class="pd-code-fetch">fetch('sections/home.html') &rarr; #home-section</p>
+                  </div>
+                  <div>
+                    <div class="kicker">How it's built</div>
+                    <h2>One page, split into reusable sections</h2>
+                    <p>
+                      Each section lives in its own HTML file and is loaded
+                      into <code>index.html</code> with <code>fetch()</code>,
+                      so the same template can be reused for another couple
+                      by editing content files only, not the layout.
+                    </p>
+                    <p>
+                      Styling uses Bootstrap 5 with custom CSS, and opening
+                      the invitation triggers a custom eased scroll animation
+                      instead of a plain jump.
+                    </p>
+                    <div class="pd-code-tags">
+                      <span class="pill">HTML</span>
+                      <span class="pill">CSS</span>
+                      <span class="pill">JavaScript</span>
+                      <span class="pill">Bootstrap 5</span>
+                      <span class="pill">Font Awesome</span>
+                      <span class="pill">Google Maps embed</span>
+                      <span class="pill">Vercel</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section data-animated-content data-ac-delay="0.24">
+                <div class="kicker">Design choices</div>
+                <h2>A silver anniversary look</h2>
+
+                <div class="pd-design-grid">
+                  <div class="pd-design-card">
+                    <h3>Color</h3>
+                    <div class="pd-swatch-row">
+                      <div class="pd-swatch">
+                        <span class="pd-swatch-chip" style="background:#0b2f68"></span>
+                        <span>Navy</span>
+                      </div>
+                      <div class="pd-swatch">
+                        <span class="pd-swatch-chip" style="background:#17356b"></span>
+                        <span>Royal blue</span>
+                      </div>
+                      <div class="pd-swatch">
+                        <span class="pd-swatch-chip" style="background:#aab7d6"></span>
+                        <span>Silver</span>
+                      </div>
+                      <div class="pd-swatch">
+                        <span class="pd-swatch-chip" style="background:#eaf2fb"></span>
+                        <span>Ice white</span>
+                      </div>
+                    </div>
+                    <p class="pd-design-note">
+                      Navy and silver, to match the 25th "silver anniversary"
+                      theme.
+                    </p>
+                  </div>
+
+                  <div class="pd-design-card">
+                    <h3>Typography</h3>
+                    <div class="pd-type-rows">
+                      <div class="pd-type-row">
+                        <span class="pd-type-sample" style="font-family:'Cinzel',serif">CINZEL</span>
+                        <span class="pd-type-label">Headings</span>
+                      </div>
+                      <div class="pd-type-row">
+                        <span class="pd-type-sample" style="font-family:'Cormorant Garamond',serif">Cormorant Garamond</span>
+                        <span class="pd-type-label">Body text</span>
+                      </div>
+                      <div class="pd-type-row">
+                        <span class="pd-type-sample" style="font-family:'Great Vibes',cursive; font-size:26px;">Andi &amp; Sari</span>
+                        <span class="pd-type-label">Names</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section data-animated-content data-ac-delay="0.3">
+                <div class="kicker">What I learned</div>
+                <h2>Small details that shape the experience</h2>
+
+                <div class="pd-learned-grid">
+                  <div class="pd-learned-card">
+                    Browsers block music from autoplaying, so the music only
+                    starts after the guest taps the open button.
+                  </div>
+                  <div class="pd-learned-card">
+                    Splitting the page into section files makes content
+                    changes faster and safer.
+                  </div>
+                  <div class="pd-learned-card">
+                    Designing mobile-first matters when the audience opens
+                    the link from their phones.
+                  </div>
+                </div>
+              </section>
+            </div>
           </div>
         </section>
       </main>
@@ -111,7 +460,6 @@
       <footer>
         <div class="footer-row">
           <span>&copy; 2026 portfolio by eugenialaellisahibau</span>
-          <span>Dibangun dengan HTML, CSS &amp; JavaScript murni</span>
         </div>
       </footer>
     </div>
