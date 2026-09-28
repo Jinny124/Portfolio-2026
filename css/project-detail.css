@@ -303,8 +303,18 @@
   align-items: center;
 }
 
-.pd-diagram-row-reverse {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 540px);
+/* *-reverse TIDAK menukar definisi kolom -- track 1 tetap kolom
+   berukuran tetap (untuk diagram), track 2 tetap 1fr (untuk teks).
+   Yang membalik posisi visualnya cuma `order` di bawah: elemen teks
+   (anak pertama di HTML) didorong ke track 2, jadi diagram otomatis
+   jatuh ke track 1 meski ditulis belakangan di markup. Sebelumnya di
+   sini kolomnya ikut ditukar juga, jadi malah diagram yang kebagian
+   track 1fr (melebar) dan teks yang kena batas kolom tetap -- salah. */
+
+/* Class diagram lebih tinggi (potret) daripada diagram lain di halaman
+   ini, jadi kolom track 1 (diagram) dikecilkan sendiri di sini. */
+.pd-class-diagram-row {
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
 }
 
 /* Overview: kicker+h2 di kiri, paragraf di kanan -- keduanya teks,

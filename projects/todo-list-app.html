@@ -334,7 +334,7 @@
               </section>
 
               <section data-animated-content data-ac-delay="0.18">
-                <div class="pd-diagram-row pd-diagram-row-reverse">
+                <div class="pd-diagram-row pd-diagram-row-reverse pd-class-diagram-row">
                   <div>
                     <div class="kicker">Class diagram</div>
                     <h2>A structure that's easy to extend</h2>
@@ -362,118 +362,6 @@
                 </div>
               </section>
 
-              <section data-animated-content data-ac-delay="0.24">
-                <div class="kicker">Design patterns</div>
-                <h2>Two patterns that keep the code flexible</h2>
-                <div class="pd-two-col">
-                  <div class="pd-pattern-card">
-                    <button
-                      type="button"
-                      class="pd-lightbox-trigger pd-code-img"
-                      data-full="../assets/case-studies/todo-list-app/code-factory-pattern.png"
-                      data-title="Potongan kode Factory Pattern: TaskFactory, AssignmentFactory, HobbyFactory"
-                    >
-                      <img
-                        src="../assets/case-studies/todo-list-app/code-factory-pattern.png"
-                        alt="Potongan kode Factory Pattern: TaskFactory, AssignmentFactory, HobbyFactory"
-                      />
-                    </button>
-                    <span class="pd-flow-type">Factory Pattern</span>
-                    <h3>Creating tasks without depending on their type</h3>
-                    <p>
-                      Object creation is separated from the app logic. The
-                      app picks the right factory, AssignmentFactory or
-                      HobbyFactory, and calls createTask(). Adding a new task
-                      type only means adding a new factory.
-                    </p>
-                  </div>
-                  <div class="pd-pattern-card">
-                    <button
-                      type="button"
-                      class="pd-lightbox-trigger pd-code-img"
-                      data-full="../assets/case-studies/todo-list-app/code-strategy-pattern.png"
-                      data-title="Potongan kode Strategy Pattern: TaskModificationStrategy, UpdateStatusStrategy, DeleteTaskStrategy"
-                    >
-                      <img
-                        src="../assets/case-studies/todo-list-app/code-strategy-pattern.png"
-                        alt="Potongan kode Strategy Pattern: TaskModificationStrategy, UpdateStatusStrategy, DeleteTaskStrategy"
-                      />
-                    </button>
-                    <span class="pd-flow-type">Strategy Pattern</span>
-                    <h3>Swappable task actions</h3>
-                    <p>
-                      Updating a status and deleting a task are separate
-                      strategies behind one interface,
-                      TaskModificationStrategy. The app only calls modify(),
-                      so new actions like archiving can be added as new
-                      strategies.
-                    </p>
-                  </div>
-                </div>
-              </section>
-
-              <section data-animated-content data-ac-delay="0.3">
-                <div class="pd-diagram-row">
-                  <button
-                    type="button"
-                    class="pd-lightbox-trigger pd-code-img pd-code-img-tall"
-                    data-full="../assets/case-studies/todo-list-app/console-demo.png"
-                    data-title="Demo aplikasi konsol Java: membuat akun, menambah tugas, dan memperbarui status"
-                  >
-                    <img
-                      src="../assets/case-studies/todo-list-app/console-demo.png"
-                      alt="Demo aplikasi konsol Java: membuat akun, menambah tugas, dan memperbarui status"
-                    />
-                  </button>
-                  <div>
-                    <div class="kicker">Implementation</div>
-                    <h2>From diagrams to a working Java 11 console app</h2>
-                    <p>
-                      I built the design as a console app in Java 11 using
-                      Eclipse, organized into four packages: models,
-                      factories, strategies, and app. The demo shows
-                      creating an account, adding an Assignment, viewing the
-                      task list, and updating a task's status.
-                    </p>
-                  </div>
-                </div>
-              </section>
-
-              <section data-animated-content data-ac-delay="0.36">
-                <h2>What I built, and what I learned</h2>
-                <div class="pd-two-col">
-                  <div class="pd-note-card">
-                    <h3>What I built</h3>
-                    <ul class="pd-check-list">
-                      <li>Account menu: create user, log in, log out, exit</li>
-                      <li>
-                        Task management: add, view, update status, and
-                        delete with confirmation
-                      </li>
-                      <li>Two task types: Assignment and Hobby</li>
-                      <li>Deadline input validation</li>
-                      <li>Factory and Strategy patterns</li>
-                    </ul>
-                  </div>
-                  <div class="pd-note-card">
-                    <h3>What I learned</h3>
-                    <ul class="pd-check-list">
-                      <li>
-                        Keeping use case, activity, and sequence diagrams
-                        consistent makes gaps easier to spot before coding.
-                      </li>
-                      <li>
-                        Design patterns make it easy to add features
-                        without touching other parts of the code.
-                      </li>
-                      <li>
-                        Limiting the scope helped me finish the core
-                        features on time.
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </section>
             </div>
           </div>
         </section>
