@@ -60,7 +60,7 @@
    dari halaman pertama PDF-nya. */
 .pd-hero-art {
   flex-shrink: 0;
-  width: clamp(360px, 46vw, 620px);
+  width: clamp(260px, 32vw, 440px);
   margin-top: 40px;
   aspect-ratio: 1750 / 984;
   object-fit: cover;
@@ -71,15 +71,68 @@
 @media (max-width: 800px) {
   .pd-hero-art {
     width: 100%;
-    max-width: 420px;
+    max-width: 280px;
   }
 }
 
 /* Digital Invitation: gambar hero-nya sendiri hampir persegi (1720x1600),
-   bukan lanskap 1750x984 seperti To-Do List App. */
+   bukan lanskap 1750x984 seperti To-Do List App. object-fit: cover supaya
+   makin kecil, background birunya yang kepotong, bukan layar ponselnya. */
 .pd-hero-art-square {
-  aspect-ratio: 1720 / 1600;
-  object-fit: contain;
+  aspect-ratio: 1720 / 1500;
+  object-fit: cover;
+}
+
+/* Healthify: hero-nya screenshot web app asli, jadi dibungkus kartu
+   browser (address bar palsu) bukan cuma gambar polos -- beda dari
+   To-Do List App (ilustrasi) atau Digital Invitation (frame ponsel),
+   tapi ukuran dan spacing-nya mengikuti .pd-hero-art supaya tetap
+   selaras dengan halaman studi kasus lain. */
+.pd-browser-frame {
+  flex-shrink: 0;
+  width: clamp(260px, 32vw, 440px);
+  margin-top: 40px;
+  border-radius: var(--radius-l);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  background: var(--bg-elevated);
+}
+
+@media (max-width: 800px) {
+  .pd-browser-frame {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+.pd-browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  background: #12233f;
+  color: #b7c4de;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pd-browser-bar svg {
+  flex-shrink: 0;
+  width: 11px;
+  height: 11px;
+  opacity: 0.85;
+}
+
+.pd-browser-frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1200 / 750;
+  object-fit: cover;
+  object-position: top;
 }
 
 /* Kartu statistik Year/Role/Type/Tools -- kotak bergaris dengan garis
@@ -309,6 +362,117 @@
   margin-top: 10px !important;
 }
 
+/* ---------------- Healthify: model akses (kartu diagram + daftar peran) ---------------- */
+
+.pd-access-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  background: var(--bg-elevated);
+}
+
+.pd-access-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pd-access-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--surface);
+}
+
+.pd-access-role .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.pd-access-role.is-user .dot {
+  background: #4f7cff;
+}
+
+.pd-access-role.is-doctor .dot {
+  background: #29b37a;
+}
+
+.pd-access-flow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pd-access-step {
+  flex: 1;
+  padding: 12px 10px;
+  border-radius: var(--radius-s);
+  background: var(--surface-2);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pd-access-arrow {
+  flex-shrink: 0;
+  color: var(--text-dim);
+}
+
+.pd-role-rows {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+/* Kicker+h2 tanpa .pd-overview-row (mis. Access model) menempel karena
+   keduanya margin:0 bawaan -- kasih jarak eksplisit di sini. */
+.pd-kicker-spaced {
+  margin-bottom: 8px;
+}
+
+.pd-role-row {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.pd-role-row:first-child {
+  padding-top: 0;
+}
+
+.pd-role-row:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.pd-role-row dd {
+  margin: 6px 0 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+@media (max-width: 700px) {
+  .pd-access-flow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pd-access-arrow {
+    align-self: center;
+    transform: rotate(90deg);
+  }
+}
+
 /* Baris teks + placeholder diagram berdampingan (use case & class
    diagram). *-reverse menukar sisi supaya diagram di kanan. */
 .pd-diagram-row {
@@ -352,6 +516,28 @@
 
 .pd-overview-row + .pd-two-col {
   margin-top: clamp(56px, 9vw, 97px);
+}
+
+/* Digital Invitation: judul-judulnya lebih panjang dari halaman lain,
+   jadi kolom kiri dilebarkan (proporsional lewat clamp, bukan angka
+   tetap) supaya baris kalimatnya terkendali tanpa mengecilkan font
+   dan tanpa menyempitkan paragraf di kolom kanan saat layar sedang. */
+.pd-overview-row-wide {
+  grid-template-columns: minmax(0, clamp(380px, 45vw, 620px)) minmax(220px, 1fr);
+}
+
+/* Paragraf dibatasi 68ch (.pd-case section p) jadi menyisakan ruang
+   kosong di kanan kolomnya -- dorong ke kanan biar mepet ujung kolom,
+   bukan mepet ke judul di kiri. */
+.pd-para-push-right {
+  margin-left: auto;
+}
+
+/* Healthify: gap-nya dipersempit dari default supaya kolom paragraf
+   kebagian lebar lebih banyak dan baris kalimatnya jadi lebih ringkas
+   (4 baris, bukan 5), tanpa perlu mengecilkan kolom judul. */
+.pd-gap-tight {
+  gap: clamp(56px, 8vw, 100px);
 }
 
 .pd-diagram-row-reverse > *:first-child {
@@ -803,19 +989,32 @@
   letter-spacing: 1px;
 }
 
-/* ---------------- baris 5 ponsel mini (abstrak, bukan teks asli) ---------------- */
+/* ---------------- baris 5 ponsel mini (screenshot asli situsnya) ---------------- */
 
-.pd-screens-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: clamp(10px, 2vw, 20px);
+.pd-screens-card {
+  --card-pad-x: clamp(16px, 3vw, 32px);
   margin-top: 28px;
-  padding: clamp(24px, 4vw, 40px) clamp(16px, 3vw, 32px);
+  padding: clamp(24px, 4vw, 40px) var(--card-pad-x);
   border: 1px solid var(--border);
   border-radius: var(--radius-l);
   background: var(--surface-2);
-  overflow-x: auto;
+}
+
+/* Header di dalam kartu digeser mendekati sisi kiri supaya sejajar
+   dengan section Overview di atasnya, tapi disisakan sedikit jarak ke
+   border kartu supaya tidak mepet. Sisi kanan tetap pakai padding
+   kartu supaya paragraf juga tidak mepet border. */
+.pd-screens-card > .pd-overview-row {
+  margin-left: calc(-1 * var(--card-pad-x) + 16px);
+}
+
+.pd-screens-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(24px, 4vw, 48px) clamp(20px, 3vw, 40px);
+  margin-top: 40px;
 }
 
 .pd-screen-item {
@@ -833,7 +1032,7 @@
 }
 
 .pd-phone-mini {
-  width: 92px;
+  width: clamp(104px, 10vw, 148px);
   aspect-ratio: 9 / 19.5;
   padding: 6px;
   background: #0d1f45;
@@ -841,147 +1040,13 @@
   box-shadow: var(--shadow);
 }
 
-.pd-phone-mini .pd-phone-screen {
+.pd-phone-screen-img {
+  width: 100%;
+  height: 100%;
   border-radius: 13px;
-  padding: 10px 7px;
-  gap: 5px;
-}
-
-.pd-phone-mini .pd-mini-bar {
-  width: 60%;
-  height: 3px;
-  border-radius: 2px;
-  background: currentColor;
-  opacity: 0.55;
-}
-
-.pd-phone-mini .pd-mini-bar.short {
-  width: 38%;
-}
-
-.pd-mini-opening {
-  background: linear-gradient(180deg, #0b2f68 0%, #03173d 100%);
-  color: #dfe6f7;
-}
-
-.pd-mini-opening .pd-mini-script {
-  margin: 4px 0;
-  font-family: 'Great Vibes', cursive;
-  font-size: 15px;
-  color: #fff;
-}
-
-.pd-mini-opening .pd-mini-pill {
-  margin-top: 6px;
-  padding: 3px 10px;
-  border-radius: 8px;
-  background: #eaf2fb;
-  color: #17356b;
-  font-size: 6px;
-  font-family: 'Cinzel', serif;
-  letter-spacing: 0.5px;
-}
-
-.pd-mini-countdown {
-  background: linear-gradient(180deg, #f4f9ff, #eaf2fb);
-  color: #17356b;
-}
-
-.pd-mini-countdown .pd-mini-circles {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 6px;
-  margin-top: 6px;
-}
-
-.pd-mini-countdown .pd-mini-circles span {
+  object-fit: cover;
+  object-position: top;
   display: block;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: 1.5px solid #b9cff5;
-}
-
-.pd-mini-date {
-  gap: 6px;
-  background: #f7fbff;
-  color: #17356b;
-}
-
-.pd-mini-date .pd-mini-icon {
-  width: 22px;
-  height: 22px;
-  margin-bottom: 2px;
-  border-radius: 50%;
-  background: #0d1f45;
-}
-
-.pd-mini-date .pd-mini-card {
-  width: 100%;
-  padding: 6px;
-  border-radius: 6px;
-  background: #fff;
-  border: 1px solid #dfe6f7;
-}
-
-.pd-mini-love {
-  align-items: flex-start;
-  background: linear-gradient(180deg, #f4f9ff, #eaf2fb);
-  color: #17356b;
-}
-
-.pd-mini-love .pd-mini-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-  padding-left: 10px;
-  border-left: 1.5px solid #b9cff5;
-}
-
-.pd-mini-love .pd-mini-timeline span {
-  position: relative;
-  width: 55%;
-  height: 3px;
-  border-radius: 2px;
-  background: currentColor;
-  opacity: 0.55;
-}
-
-.pd-mini-love .pd-mini-timeline span::before {
-  content: '';
-  position: absolute;
-  left: -13.5px;
-  top: -2px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #17356b;
-}
-
-.pd-mini-gallery {
-  justify-content: flex-start;
-  padding-top: 14px !important;
-  background: #fff;
-}
-
-.pd-mini-gallery .pd-mini-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 4px;
-  width: 100%;
-}
-
-.pd-mini-gallery .pd-mini-grid span {
-  aspect-ratio: 1;
-  border-radius: 4px;
-  background: linear-gradient(155deg, #aac7ff, #dce8ff);
-}
-
-@media (max-width: 700px) {
-  .pd-screens-row {
-    justify-content: flex-start;
-  }
 }
 
 /* ---------------- key features: grid 3 kolom ---------------- */
@@ -1102,140 +1167,3 @@
   margin-top: 16px;
 }
 
-/* ---------------- design choices: warna + tipografi ---------------- */
-
-.pd-design-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 24px;
-}
-
-@media (max-width: 700px) {
-  .pd-design-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.pd-design-card {
-  padding: 22px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-m);
-  background: var(--bg-elevated);
-}
-
-.pd-design-card h3 {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  font-weight: 400;
-}
-
-.pd-design-note {
-  margin-top: 14px !important;
-  font-size: 13.5px !important;
-}
-
-.pd-swatch-row {
-  display: flex;
-  gap: 10px;
-  margin-top: 16px;
-}
-
-.pd-swatch {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.pd-swatch-chip {
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: var(--radius-s);
-  border: 1px solid var(--border);
-}
-
-.pd-swatch span {
-  font-size: 11px;
-  color: var(--text-muted);
-}
-
-.pd-type-rows {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 16px;
-}
-
-.pd-type-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--border);
-}
-
-.pd-type-row:last-child {
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.pd-type-sample {
-  font-size: 20px;
-  color: var(--text);
-}
-
-.pd-type-label {
-  flex-shrink: 0;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-}
-
-/* ---------------- what I learned: 3 kartu sebaris ---------------- */
-
-.pd-learned-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 20px;
-}
-
-@media (max-width: 800px) {
-  .pd-learned-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.pd-learned-card {
-  display: flex;
-  gap: 10px;
-  padding: 18px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-m);
-  background: var(--bg-elevated);
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--text-muted);
-}
-
-.pd-learned-card::before {
-  content: '';
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
-  border-radius: 50%;
-  background: var(--accent);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5L20 7'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 60%;
-}
