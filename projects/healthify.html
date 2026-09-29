@@ -142,13 +142,6 @@
             </div>
 
             <div class="pd-browser-frame" data-animated-content data-ac-delay="0.2">
-              <div class="pd-browser-bar">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="3" y="11" width="18" height="10" rx="2"></rect>
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
-                <span>healthify-website-production.up.railway.app</span>
-              </div>
               <img
                 src="../assets/case-studies/healthify/hero.png"
                 alt="Healthify homepage: a sidebar with Home and Popular, and a feed of health questions guests can browse"
@@ -207,6 +200,7 @@
                       <span class="pd-access-role"><span class="dot"></span>Guest</span>
                       <span class="pd-access-role is-user"><span class="dot"></span>User</span>
                       <span class="pd-access-role is-doctor"><span class="dot"></span>Doctor</span>
+                      <span class="pd-access-role is-admin"><span class="dot"></span>Admin</span>
                     </div>
                     <div class="pd-access-flow">
                       <span class="pd-access-step">Browse</span>
@@ -215,15 +209,22 @@
                       <svg class="pd-access-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                       <span class="pd-access-step">Post &amp; Vote</span>
                     </div>
+
+                    <div class="pd-access-divider">Outside the public track</div>
+
+                    <div class="pd-access-admin">
+                      <span class="pd-access-admin-badge">Admin</span>
+                      <p>Reviews pending Doctor applications, approves or rejects the badge</p>
+                    </div>
                   </div>
 
                   <div>
                     <div class="kicker pd-kicker-spaced">Access model</div>
-                    <h2>Three roles, one forum</h2>
+                    <h2>Four roles, one forum</h2>
                     <p>
                       Access widens in steps, so the barrier to reading is low
-                      while the barrier to a doctor's badge stays high enough
-                      to trust.
+                      while the barrier to a doctor's badge &mdash; and to
+                      moderation &mdash; stays high enough to trust.
                     </p>
 
                     <dl class="pd-role-rows">
@@ -239,23 +240,23 @@
                         <dt class="kicker">Doctor</dt>
                         <dd>Everything a User can do, plus a verified badge after certificate review</dd>
                       </div>
+                      <div class="pd-role-row">
+                        <dt class="kicker">Admin</dt>
+                        <dd>Reviews pending doctor applications, approves or rejects the &ldquo;Doctor&rdquo; badge</dd>
+                      </div>
                     </dl>
                   </div>
                 </div>
               </section>
 
               <section data-animated-content data-ac-delay="0.12">
-                <div class="pd-diagram-row pd-overview-row">
-                  <div>
-                    <div class="kicker">Key flows</div>
-                    <h2>How the core features behave</h2>
-                  </div>
-                  <p>
-                    Four flows carry most of the app's logic, from proving a
-                    doctor's credentials to reading the forum in three
-                    languages. Select one to see it up close.
-                  </p>
-                </div>
+                <div class="kicker">Key flows</div>
+                <h2>How the core features behave</h2>
+                <p>
+                  Four flows carry most of the app's logic, from proving a
+                  doctor's credentials to reading the forum in three
+                  languages. Select one to see it up close.
+                </p>
 
                 <div class="pd-flow-tabs">
                   <div class="pd-flow-tablist" role="tablist">
@@ -275,12 +276,12 @@
                       class="pd-flow-tab"
                       role="tab"
                       aria-selected="false"
-                      data-name="Login"
-                      data-type="Authentication"
-                      data-img="../assets/case-studies/healthify/flows/login.png"
-                      data-alt="Login form with email, password, remember me, and a forgot-password link"
-                      data-desc="Registered users sign in with email and password. A Remember me checkbox keeps the session going, and a Forgot my password link covers the case they can't."
-                    ><span class="pd-flow-tab-num">02</span> Login</button>
+                      data-name="Admin Verification"
+                      data-type="Administration"
+                      data-img="../assets/case-studies/healthify/flows/admin-verification.png"
+                      data-alt="Admin queue of pending doctor applications with approve and reject actions"
+                      data-desc="Pending doctor applications land in one queue for the admin to review. Approve unlocks the badge instantly; reject demotes the account back to a normal member and wipes the certificate."
+                    ><span class="pd-flow-tab-num">02</span> Admin Verification</button>
                     <button
                       type="button"
                       class="pd-flow-tab"
