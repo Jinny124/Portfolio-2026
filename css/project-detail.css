@@ -284,6 +284,7 @@
 
   .pd-stats-icons > div:last-child dd {
     display: inline-flex;
+    justify-self: start;
     padding: 3px 12px;
     border-radius: 999px;
     background: var(--surface-2);
