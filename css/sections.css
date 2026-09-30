@@ -247,33 +247,6 @@
   visibility: hidden;
 }
 
-/* Di mobile gak ada hover, jadi .skill-list (yang normalnya cuma
-   muncul saat di-hover) ditampilkan langsung di bawah .skill-desc,
-   dan label "Hover to explore" (gak relevan di touch) disembunyikan. */
-@media (max-width: 700px) {
-  .skill-body {
-    display: block;
-  }
-
-  .skill-list {
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    margin-top: 14px;
-  }
-
-  .skill-count {
-    display: none;
-  }
-
-  /* bulatan centang aslinya didesain di atas background accent (state
-     hover) -- di mobile card-nya tetap warna netral, jadi bulatannya
-     perlu diberi warna sendiri supaya tetap kelihatan. */
-  .skill-list li::before {
-    background-color: var(--accent);
-  }
-}
-
 /* satu baris ringkas di bawah keempat kartu, bukan diulang per kartu */
 .toolbox-strip {
   display: flex;
