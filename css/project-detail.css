@@ -329,6 +329,20 @@
   margin-top: 28px;
 }
 
+/* Tombol "View"/"Visit site"/dst di mobile dilebarkan penuh
+   (rata kiri-kanan), ditumpuk kalau lebih dari satu (mis. Rental
+   demo + Showcase demo), bukan berdampingan sempit. */
+@media (max-width: 480px) {
+  .pd-cta {
+    flex-direction: column;
+  }
+
+  .pd-cta .btn {
+    justify-content: center;
+    width: 100%;
+  }
+}
+
 /* ---------------- baris hero: judul di kiri, meta di kanan ---------------- */
 
 .pd-hero-row {
