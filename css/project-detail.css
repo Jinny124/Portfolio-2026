@@ -222,10 +222,29 @@
   display: none;
 }
 
-/* .pd-stats-icons: dipasang cuma di halaman To-Do List App -- di
-   mobile diganti dari kartu grid 2x2 jadi daftar 1 kolom, tiap baris
-   diberi ikon bulat, dan value Tools ditampilkan sebagai pil. Halaman
-   studi kasus lain yang masih pakai .pd-stats polos tidak terpengaruh. */
+/* .pd-stat-chips: dipakai di field Tools/Stack yang isinya beberapa
+   nama dipisah koma (mis. "HTML, CSS, JavaScript") -- tiap nama
+   dibungkus <span class="pd-stat-chip"> supaya di mobile bisa jadi
+   pil sendiri-sendiri. Di desktop tetap tampil sebagai teks dipisah
+   koma biasa (font-size:0 di sini menghapus spasi bawaan HTML antar
+   span, koma disisipkan lewat ::before, sama seperti trik di
+   .pd-usecase-table). */
+.pd-stats dd.pd-stat-chips {
+  font-size: 0;
+}
+
+.pd-stat-chip {
+  font-size: 14.5px;
+}
+
+.pd-stat-chip + .pd-stat-chip::before {
+  content: ', ';
+}
+
+/* .pd-stats-icons: di mobile diganti dari kartu grid 2x2 jadi daftar
+   1 kolom, tiap baris diberi ikon bulat, dan Tools/Stack ditampilkan
+   sebagai pil (satu atau beberapa). Halaman yang masih pakai
+   .pd-stats polos (tanpa class ini) tidak terpengaruh. */
 @media (max-width: 480px) {
   .pd-stats-icons {
     grid-template-columns: 1fr;
@@ -282,15 +301,24 @@
     font-weight: 600;
   }
 
-  .pd-stats-icons > div:last-child dd {
+  .pd-stats-icons dd.pd-stat-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .pd-stats-icons .pd-stat-chip {
     display: inline-flex;
-    justify-self: start;
     padding: 3px 12px;
     border-radius: 999px;
     background: var(--surface-2);
     color: var(--accent);
     font-size: 13px;
     font-weight: 600;
+  }
+
+  .pd-stats-icons .pd-stat-chip::before {
+    content: none;
   }
 }
 
