@@ -762,7 +762,8 @@
 .term-box {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  row-gap: 16px;
+  column-gap: 10px;
   background: none;
   border: none;
 }
