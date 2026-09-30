@@ -356,6 +356,7 @@ nav.links a.is-active {
 
 section {
   padding: clamp(32px, 4vw, 48px) 0;
+  scroll-margin-top: 88px;
 }
 
 .section-head {
