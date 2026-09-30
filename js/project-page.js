@@ -57,5 +57,29 @@ for (const tabs of document.querySelectorAll('.pd-flow-tabs')) {
   });
 }
 
+/* Carousel Screens (mobile): titik halaman mengikuti kartu yang lagi
+   di tengah layar saat digeser. No-op di halaman yang tidak punya
+   .pd-screens-dots (cuma Digital Invitation saat ini). */
+for (const dotsEl of document.querySelectorAll('.pd-screens-dots')) {
+  const row = dotsEl.previousElementSibling;
+  if (!row || !row.classList.contains('pd-screens-row')) continue;
+
+  const items = [...row.children];
+  const dots = [...dotsEl.children];
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const index = items.indexOf(entry.target);
+        for (const [i, dot] of dots.entries()) dot.classList.toggle('is-active', i === index);
+      }
+    },
+    { root: row, threshold: 0.6 }
+  );
+
+  for (const item of items) observer.observe(item);
+}
+
 setupThemeToggle(document.getElementById('theme-toggle'));
 setupMobileNav(document.querySelector('header.nav'), document.getElementById('nav-toggle'));

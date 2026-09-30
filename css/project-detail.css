@@ -1393,6 +1393,108 @@
   display: block;
 }
 
+.pd-screens-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pd-screens-swipe-hint,
+.pd-screen-desc,
+.pd-screens-dots {
+  display: none;
+}
+
+/* Di mobile, deretan layar yang tadinya wrap jadi beberapa baris
+   diganti carousel geser horizontal -- satu kartu per layar (dengan
+   sedikit kartu berikutnya mengintip di kanan), lengkap dengan nomor
+   urut (CSS counter), deskripsi singkat, titik-titik halaman, dan
+   label "Swipe" sebagai petunjuk. */
+@media (max-width: 480px) {
+  .pd-screens-swipe-hint {
+    display: block;
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .pd-screens-row {
+    counter-reset: pd-screen;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 16px;
+    margin-left: calc(-1 * var(--card-pad-x) + 16px);
+    margin-right: calc(-1 * var(--card-pad-x));
+    padding: 4px calc(var(--card-pad-x) - 16px) 4px var(--card-pad-x);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .pd-screens-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pd-screen-item {
+    counter-increment: pd-screen;
+    flex: 0 0 78%;
+    align-items: flex-start;
+    text-align: left;
+    scroll-snap-align: start;
+  }
+
+  .pd-screen-item::before {
+    content: counter(pd-screen, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .pd-phone-mini {
+    width: 100%;
+  }
+
+  .pd-screen-caption {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: normal;
+  }
+
+  .pd-screen-desc {
+    display: block;
+    margin-top: -4px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+
+  .pd-screens-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 16px;
+  }
+
+  .pd-screens-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: background 0.15s ease;
+  }
+
+  .pd-screens-dot.is-active {
+    background: var(--accent);
+  }
+}
+
 /* ---------------- key features: grid 3 kolom ---------------- */
 
 .pd-feature-grid {
