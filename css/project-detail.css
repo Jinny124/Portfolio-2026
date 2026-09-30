@@ -71,7 +71,6 @@
 @media (max-width: 800px) {
   .pd-hero-art {
     width: 100%;
-    max-width: 280px;
   }
 }
 
@@ -102,7 +101,6 @@
 @media (max-width: 800px) {
   .pd-browser-frame {
     width: 100%;
-    max-width: 280px;
   }
 }
 
