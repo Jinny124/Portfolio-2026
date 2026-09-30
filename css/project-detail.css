@@ -230,18 +230,20 @@
   .pd-stats-icons {
     grid-template-columns: 1fr;
     gap: 0;
-    padding: 8px 18px;
+    padding: 8px 0;
   }
 
   /* grid, bukan flex: ikon perlu span 2 baris (dt di baris 1, dd di
      baris 2) di kolom sebelahnya, tanpa nambah elemen pembungkus baru
-     di HTML. */
+     di HTML. Padding horizontal dipindah ke sini (bukan di
+     .pd-stats-icons) supaya garis pembatas di bawah nyambung penuh
+     dari tepi ke tepi kartu, bukan berhenti sebelum sampai. */
   .pd-stats-icons > div {
     display: grid;
     grid-template-columns: 36px 1fr;
     column-gap: 14px;
     align-items: center;
-    padding: 14px 0;
+    padding: 14px 18px;
   }
 
   .pd-stats-icons > div:nth-child(2n+1) {
