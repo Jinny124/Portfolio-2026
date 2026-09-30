@@ -56,6 +56,41 @@ const heroHeading = SplitText(document.getElementById('hero-heading'), {
   },
 });
 
+/* Nama hero dipaksa selalu pecah "Eugenia Laellisa" / "Hibau" di layar
+   sempit, bukan mengikuti word-wrap bawaan browser apa adanya (yang di
+   lebar tertentu malah jatuh jadi "Eugenia" / "Laellisa Hibau" atau
+   tiga baris terpisah). SplitText membangun <span> per katanya secara
+   asinkron (menunggu font sudah siap), jadi dicoba langsung dulu --
+   kalau belum ada (fontnya belum siap saat baris ini jalan), baru
+   ditunggu lewat MutationObserver. */
+{
+  const heroHeadingEl = document.getElementById('hero-heading');
+
+  function forceHeroNameLineBreak() {
+    const nodes = [...heroHeadingEl.childNodes];
+    const words = nodes.filter((n) => n.nodeType === 1 && n.classList.contains('split-word'));
+    if (words.length < 3) return false;
+
+    // Struktur setelah SplitText: [kata0, spasi, kata1, spasi, kata2].
+    // Kata0+spasi+kata1 ("Eugenia Laellisa") disatukan dalam satu
+    // pembungkus nowrap, kata2 ("Hibau") ditandai lewat class supaya
+    // CSS bisa memaksanya turun baris sendiri di mobile.
+    const wrap = document.createElement('span');
+    wrap.className = 'hero-name-line1';
+    heroHeadingEl.insertBefore(wrap, nodes[0]);
+    wrap.append(nodes[0], nodes[1], nodes[2]);
+    words[2].classList.add('hero-name-line2');
+    return true;
+  }
+
+  if (!forceHeroNameLineBreak()) {
+    const observer = new MutationObserver(() => {
+      if (forceHeroNameLineBreak()) observer.disconnect();
+    });
+    observer.observe(heroHeadingEl, { childList: true });
+  }
+}
+
 /* ---------------- GradientText: judul kontak ---------------- */
 
 themed.push(

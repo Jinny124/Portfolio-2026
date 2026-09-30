@@ -448,13 +448,23 @@ nav.links a.is-active {
 }
 
 /* Di HP, satu baris berarti huruf sekecil ±19px. Lebih baik nama turun
-   baris dengan ukuran yang tetap tampil sebagai judul -- 30px dipilih
-   supaya pecahnya persis jadi dua baris ("Eugenia" / "Laellisa
-   Hibau"), bukan tiga baris satu kata per baris. */
+   baris dengan ukuran yang tetap tampil sebagai judul. Pecahnya
+   dipaksa lewat .hero-name-line1/.hero-name-line2 (dipasang
+   js/main.js), bukan word-wrap bawaan browser -- di lebar-lebar
+   tertentu itu malah jatuh jadi "Eugenia" / "Laellisa Hibau" atau tiga
+   baris satu kata, bukan "Eugenia Laellisa" / "Hibau" yang diinginkan. */
+.hero-name-line1 {
+  white-space: nowrap;
+}
+
 @media (max-width: 640px) {
   .hero h1 {
-    font-size: 30px;
+    font-size: 27px;
     white-space: normal;
+  }
+
+  .hero-name-line2 {
+    display: block;
   }
 }
 
