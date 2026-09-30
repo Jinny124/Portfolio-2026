@@ -754,12 +754,11 @@
   content: ', ';
 }
 
-/* Di mobile, tiap kelompok jadi kartu sendiri dengan jumlah fungsi di
-   kanan atas, dan tiap fungsi jadi pil sendiri -- bukan teks
-   dipisah koma yang padat dibaca di layar sempit. */
+/* Di mobile, tiap kelompok jadi kartu sendiri, dan tiap fungsi jadi
+   pil sendiri -- bukan teks dipisah koma yang padat dibaca di layar
+   sempit. */
 @media (max-width: 480px) {
   .pd-usecase-table > div {
-    position: relative;
     flex-direction: column;
     gap: 10px;
     padding: 16px;
@@ -774,16 +773,6 @@
 
   .pd-usecase-table > div:last-child {
     border-bottom: 1px solid var(--border);
-  }
-
-  .pd-usecase-table > div::after {
-    content: attr(data-count);
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--text-dim);
   }
 
   .pd-usecase-table dt {
