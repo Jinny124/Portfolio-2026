@@ -733,10 +733,82 @@
   color: var(--text-dim);
 }
 
+/* font-size: 0 membuat whitespace antar <span> di HTML (baris baru +
+   indentasi) tidak ikut jadi spasi terlihat -- makanya ", " di bawah
+   perlu disisipkan lewat CSS, bukan ditulis manual di antara span. */
 .pd-usecase-table dd {
   flex: 1;
   min-width: 200px;
+  font-size: 0;
+}
+
+/* .pd-usecase-chip cuma <span> polos di desktop -- disatukan lagi jadi
+   teks "Register, Login, Logout" lewat koma yang disisipkan CSS,
+   supaya markup-nya bisa dipakai ulang jadi pil di mobile (di bawah)
+   tanpa dobel HTML. */
+.pd-usecase-chip {
   font-size: 15px;
+}
+
+.pd-usecase-chip + .pd-usecase-chip::before {
+  content: ', ';
+}
+
+/* Di mobile, tiap kelompok jadi kartu sendiri dengan jumlah fungsi di
+   kanan atas, dan tiap fungsi jadi pil sendiri -- bukan teks
+   dipisah koma yang padat dibaca di layar sempit. */
+@media (max-width: 480px) {
+  .pd-usecase-table > div {
+    position: relative;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    border-radius: var(--radius-m);
+  }
+
+  .pd-usecase-table > div + div {
+    margin-top: 10px;
+  }
+
+  .pd-usecase-table > div:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pd-usecase-table > div::after {
+    content: attr(data-count);
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .pd-usecase-table dt {
+    flex: none;
+  }
+
+  .pd-usecase-table dd {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .pd-usecase-chip {
+    padding: 6px 14px;
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    font-size: 13.5px;
+    color: var(--accent);
+  }
+
+  .pd-usecase-chip + .pd-usecase-chip::before {
+    content: none;
+  }
 }
 
 /* Key flows: tab bernomor di atas, satu panel gambar+teks di bawah
