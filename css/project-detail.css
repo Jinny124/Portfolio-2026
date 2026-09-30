@@ -672,6 +672,15 @@
   .pd-diagram-row-reverse > *:first-child {
     order: 0;
   }
+
+  /* .pd-overview-row/.pd-gap-tighter pakai gap gede (110-190px atau
+     24-48px) buat jarak ANTAR KOLOM di desktop -- begitu kolomnya
+     jatuh jadi 1 (baris di atas), gap yang sama itu jadi jarak
+     vertikal antar baris yang kebesaran. */
+  .pd-overview-row,
+  .pd-gap-tighter {
+    gap: 20px;
+  }
 }
 
 /* Gambar diagram UML asli (dipotong dari PDF studi kasus), bukan lagi
