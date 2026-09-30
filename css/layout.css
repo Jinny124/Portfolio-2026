@@ -522,6 +522,22 @@ section {
   color: var(--text-muted);
 }
 
+/* Di HP, clamp() di atas sudah mentok ke batas bawahnya (27.2px) --
+   terlalu besar untuk "Projects I've worked on" muat satu baris, dan
+   untuk judul Certifications malah jatuh 3 baris timpang. Diturunkan
+   khusus per section supaya pecahnya rapi: Projects 1 baris,
+   Certifications 2 baris ("Courses and certifications" /
+   "I've completed"). */
+@media (max-width: 480px) {
+  #proyek .section-head h2 {
+    font-size: 21px;
+  }
+
+  #sertifikat .section-head h2 {
+    font-size: 19px;
+  }
+}
+
 /* ---------------- footer ---------------- */
 
 footer {
