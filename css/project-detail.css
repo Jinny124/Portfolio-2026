@@ -754,6 +754,22 @@
   border-bottom: 1px solid var(--border);
 }
 
+/* Di mobile, tab-tab (yang labelnya kadang panjang, mis. "Browse &
+   Filter Catalog") dipaksa 1 baris lewat scroll geser -- bukan wrap
+   2 baris -- supaya nomor+judul tab tidak terpotong jadi timpang. */
+@media (max-width: 700px) {
+  .pd-flow-tablist {
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .pd-flow-tab {
+    flex-shrink: 0;
+  }
+}
+
 .pd-flow-tab {
   display: inline-flex;
   align-items: center;
