@@ -641,6 +641,12 @@
 
 /* ---------------- Kontak ---------------- */
 
+/* Cuma tampil di mobile (lihat @media di bawah) -- desktop tidak
+   punya kicker di section ini. */
+.contact-kicker {
+  display: none;
+}
+
 .contact-card {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -737,28 +743,105 @@
   opacity: 1;
 }
 
-/* Di mobile, value (terutama email) kepotong ellipsis karena kolomnya
-   sempit -- font dan warna tetap sama, cuma layout-nya diubah jadi
-   baris ikon+label lalu value di bawahnya sendiri, boleh turun ke 2
-   baris. Panah di ujung kanan (cuma muncul saat hover) disembunyikan,
-   toh di touch gak ada hover. */
+/* Di mobile, kartu kontak dirombak jadi kartu gelap dengan tombol --
+   bukan daftar "$ kontak --email" ala terminal seperti desktop. Baris
+   email/github/linkedin yang sama dipakai ulang, cuma field/value
+   teksnya disembunyikan dan diganti label pendek lewat ::after supaya
+   HTML-nya tidak usah didobel. Desktop tidak disentuh sama sekali. */
 @media (max-width: 480px) {
-  .term-row {
-    flex-wrap: wrap;
-    row-gap: 4px;
+  .contact-card {
+    background: #0f1c2e;
+    border-color: #0f1c2e;
   }
 
-  .term-row .value {
-    flex-basis: 100%;
-    padding-left: 26px;
-    overflow: visible;
-    white-space: normal;
-    overflow-wrap: anywhere;
-    text-overflow: clip;
+  .contact-card .contact-kicker {
+    display: block;
+    color: #8fa8c9;
   }
 
+  .contact-card h2 {
+    color: #fff;
+  }
+
+  .contact-card p {
+    color: #c3d0e3;
+  }
+
+  .term-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    background: none;
+    border: none;
+  }
+
+  .contact-card .term-row {
+    justify-content: center;
+    border-bottom: none;
+    border-radius: 999px;
+    padding: 14px 18px;
+  }
+
+  /* baris pertama (email) -- pil putih, selebar 2 kolom */
+  .contact-card .term-row:nth-child(1) {
+    grid-column: 1 / -1;
+    background: #fff;
+    color: #0f1c2e;
+  }
+
+  .contact-card .term-row:nth-child(1) svg {
+    color: #0f1c2e;
+  }
+
+  /* github + linkedin -- pil bergaris, berdampingan */
+  .contact-card .term-row:nth-child(2),
+  .contact-card .term-row:nth-child(3) {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+  }
+
+  .contact-card .term-row:nth-child(2) svg,
+  .contact-card .term-row:nth-child(3) svg {
+    color: #fff;
+  }
+
+  .contact-card .term-row:nth-child(1):hover,
+  .contact-card .term-row:nth-child(1):focus-visible {
+    background: #fff;
+    color: #0f1c2e;
+  }
+
+  .contact-card .term-row:nth-child(2):hover,
+  .contact-card .term-row:nth-child(2):focus-visible,
+  .contact-card .term-row:nth-child(3):hover,
+  .contact-card .term-row:nth-child(3):focus-visible {
+    background: transparent;
+    color: #fff;
+  }
+
+  .term-row .field,
+  .term-row .value,
   .term-row .arrow {
     display: none;
+  }
+
+  .term-row::after {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    font-weight: 600;
+  }
+
+  .term-row:nth-child(1)::after {
+    content: 'Send an email';
+  }
+
+  .term-row:nth-child(2)::after {
+    content: 'GitHub';
+  }
+
+  .term-row:nth-child(3)::after {
+    content: 'LinkedIn';
   }
 }
 

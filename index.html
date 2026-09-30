@@ -639,6 +639,9 @@
           <div class="container">
             <div class="contact-card" data-animated-content>
               <div>
+                <!-- Cuma tampil di mobile (lihat CSS) -- desktop tidak
+                     punya kicker di section ini. -->
+                <div class="kicker contact-kicker">Contact</div>
                 <!-- React Bits: GradientText -->
                 <h2>Let's work <span id="grad-terhubung">together</span></h2>
                 <p>
@@ -651,7 +654,11 @@
               <!-- Melanjutkan gaya "$ kontak --email" yang tadinya ada di sini
                    sebagai baris statis; sekarang tiga barisnya langsung tautan. -->
               <div class="term-box">
-                <a class="term-row" href="mailto:eugenialaellisahibau@gmail.com">
+                <a
+                  class="term-row"
+                  href="mailto:eugenialaellisahibau@gmail.com"
+                  aria-label="Email: eugenialaellisahibau@gmail.com"
+                >
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -668,7 +675,13 @@
                   <span class="value">eugenialaellisahibau@gmail.com</span>
                   <span class="arrow" aria-hidden="true">&rarr;</span>
                 </a>
-                <a class="term-row" href="https://github.com/Jinny124" target="_blank" rel="noopener">
+                <a
+                  class="term-row"
+                  href="https://github.com/Jinny124"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="GitHub: github.com/Jinny124"
+                >
                   <svg
                     viewBox="0 0 24 24"
                     fill="none"
@@ -693,6 +706,7 @@
                   href="https://www.linkedin.com/in/eugenialaellisahibau"
                   target="_blank"
                   rel="noopener"
+                  aria-label="LinkedIn: linkedin.com/in/eugenialaellisahibau"
                 >
                   <svg
                     viewBox="0 0 24 24"
