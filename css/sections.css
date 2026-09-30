@@ -737,6 +737,31 @@
   opacity: 1;
 }
 
+/* Di mobile, value (terutama email) kepotong ellipsis karena kolomnya
+   sempit -- font dan warna tetap sama, cuma layout-nya diubah jadi
+   baris ikon+label lalu value di bawahnya sendiri, boleh turun ke 2
+   baris. Panah di ujung kanan (cuma muncul saat hover) disembunyikan,
+   toh di touch gak ada hover. */
+@media (max-width: 480px) {
+  .term-row {
+    flex-wrap: wrap;
+    row-gap: 4px;
+  }
+
+  .term-row .value {
+    flex-basis: 100%;
+    padding-left: 26px;
+    overflow: visible;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-overflow: clip;
+  }
+
+  .term-row .arrow {
+    display: none;
+  }
+}
+
 /* ---------------- lightbox sertifikat ---------------- */
 
 .lightbox {
