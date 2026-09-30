@@ -447,11 +447,13 @@ nav.links a.is-active {
   white-space: nowrap;
 }
 
-/* Di HP, satu baris berarti huruf sekecil ±19px. Lebih baik nama
-   turun baris dengan ukuran yang tetap tampil sebagai judul. */
+/* Di HP, satu baris berarti huruf sekecil ±19px. Lebih baik nama turun
+   baris dengan ukuran yang tetap tampil sebagai judul -- 30px dipilih
+   supaya pecahnya persis jadi dua baris ("Eugenia" / "Laellisa
+   Hibau"), bukan tiga baris satu kata per baris. */
 @media (max-width: 640px) {
   .hero h1 {
-    font-size: 38.4px;
+    font-size: 30px;
     white-space: normal;
   }
 }
