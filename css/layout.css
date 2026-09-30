@@ -458,6 +458,13 @@ nav.links a.is-active {
 }
 
 @media (max-width: 640px) {
+  /* 15px (di bawah batas bawah clamp-nya, 16px) supaya baris role pecah
+     rapi jadi 2 baris -- "Quality Assurance · System Analyst" /
+     "· Frontend Developer · Data Analyst" -- bukan 3 baris timpang. */
+  .hero-roles {
+    font-size: 15px;
+  }
+
   .hero h1 {
     font-size: 27px;
     white-space: normal;
