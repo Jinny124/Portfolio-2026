@@ -792,12 +792,15 @@
 
   .pd-usecase-table dd {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 8px;
     min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .pd-usecase-chip {
+    flex-shrink: 0;
     padding: 6px 14px;
     border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
     border-radius: 999px;
