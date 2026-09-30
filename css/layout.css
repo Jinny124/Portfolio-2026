@@ -314,14 +314,17 @@ nav.links a.is-active {
 }
 
 @media (max-width: 720px) {
-  /* nav.links (yang biasanya bawa margin-left: auto ini) hilang di lebar
-     ini, jadi tombol menu yang mengambil alih mendorong dirinya + nav-cta
-     ke kanan supaya logo tetap sendirian di kiri. */
   .nav-toggle {
     display: inline-flex;
-    margin-left: auto;
+    /* order 2, setelah nav-cta -- hamburger tampil di ujung kanan,
+       "Get in Touch" di sebelah kirinya. */
+    order: 2;
   }
 
+  /* nav.links (yang biasanya bawa margin-left: auto ini) hilang di lebar
+     ini, jadi nav-cta -- sekarang item pertama grup kanan berkat order
+     di atas -- yang mengambil alih mendorong dirinya + hamburger ke
+     kanan supaya logo tetap sendirian di kiri. */
   /* Tombol hamburger baru ikut berebut ruang dengan tombol "Get in
      Touch" di baris sempit ini -- gap dikecilkan supaya labelnya tetap
      satu baris, tidak sampai perlu mengecilkan fontnya. */
@@ -330,6 +333,8 @@ nav.links a.is-active {
   }
 
   .nav-cta {
+    order: 1;
+    margin-left: auto;
     gap: 10px;
   }
 
