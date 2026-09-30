@@ -140,6 +140,17 @@ for (const el of document.querySelectorAll('[data-tilt]')) {
   });
 }
 
+/* ---------------- kartu skill: klik untuk buka daftar keahlian ---------------- */
+
+/* Sebelumnya trigger-nya hover, tapi itu tidak bisa dipakai di layar
+   sentuh. Diganti klik/tap -- kerja sama di desktop maupun mobile --
+   dan tiap kartu independen (klik satu tidak menutup yang lain). */
+for (const card of document.querySelectorAll('.skill-card')) {
+  card.addEventListener('click', () => {
+    card.classList.toggle('is-active');
+  });
+}
+
 /* ---------------- pratinjau sertifikat ---------------- */
 
 Lightbox('.cert-thumb');
