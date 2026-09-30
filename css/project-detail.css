@@ -797,6 +797,12 @@
     min-width: 0;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .pd-usecase-table dd::-webkit-scrollbar {
+    display: none;
   }
 
   .pd-usecase-chip {
@@ -838,6 +844,12 @@
     gap: 20px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .pd-flow-tablist::-webkit-scrollbar {
+    display: none;
   }
 
   .pd-flow-tab {
