@@ -218,6 +218,110 @@
   }
 }
 
+/* .pd-stat-split: "Course project" + "BINUS University" ditulis dua
+   <span> (bukan satu teks "Course project, BINUS University") supaya
+   di mobile bisa ditumpuk 2 baris -- font-size:0 di sini (dipulihkan
+   lagi di tiap span) sama seperti trik di .pd-usecase-table dd,
+   menghapus spasi bawaan HTML di antara span supaya koma yang
+   disisipkan CSS tidak kedobelan spasi. */
+.pd-stats dd.pd-stat-split {
+  font-size: 0;
+}
+
+.pd-stat-main,
+.pd-stat-sub {
+  font-size: 14.5px;
+}
+
+.pd-stat-sub::before {
+  content: ', ';
+}
+
+.pd-stat-icon {
+  display: none;
+}
+
+/* .pd-stats-icons: dipasang cuma di halaman To-Do List App -- di
+   mobile diganti dari kartu grid 2x2 jadi daftar 1 kolom, tiap baris
+   diberi ikon bulat, dan value Tools ditampilkan sebagai pil. Halaman
+   studi kasus lain yang masih pakai .pd-stats polos tidak terpengaruh. */
+@media (max-width: 480px) {
+  .pd-stats-icons {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 8px 18px;
+  }
+
+  /* grid, bukan flex: ikon perlu span 2 baris (dt di baris 1, dd di
+     baris 2) di kolom sebelahnya, tanpa nambah elemen pembungkus baru
+     di HTML. */
+  .pd-stats-icons > div {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    column-gap: 14px;
+    align-items: center;
+    padding: 14px 0;
+  }
+
+  .pd-stats-icons > div:nth-child(2n+1) {
+    border-left: none;
+  }
+
+  .pd-stats-icons > div:nth-child(n+2) {
+    margin-top: 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+
+  .pd-stat-icon {
+    display: flex;
+    grid-row: 1 / 3;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    color: var(--accent);
+    box-sizing: border-box;
+  }
+
+  .pd-stats-icons dt {
+    grid-column: 2;
+  }
+
+  .pd-stats-icons dd {
+    grid-column: 2;
+  }
+
+  .pd-stats-icons .pd-stat-main {
+    display: block;
+    font-weight: 600;
+  }
+
+  .pd-stats-icons .pd-stat-sub {
+    display: block;
+    margin-top: 1px;
+    font-size: 12.5px;
+    color: var(--text-muted);
+  }
+
+  .pd-stats-icons .pd-stat-sub::before {
+    content: none;
+  }
+
+  .pd-stats-icons > div:last-child dd {
+    display: inline-flex;
+    padding: 3px 12px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+
 .pd-cta {
   display: flex;
   flex-wrap: wrap;
