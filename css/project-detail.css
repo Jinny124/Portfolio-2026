@@ -808,6 +808,13 @@
   .pd-usecase-chip + .pd-usecase-chip::before {
     content: none;
   }
+
+  .pd-usecase-note {
+    padding: 14px 16px;
+    border-radius: var(--radius-m);
+    background: var(--surface-2);
+    color: var(--accent);
+  }
 }
 
 /* Key flows: tab bernomor di atas, satu panel gambar+teks di bawah
