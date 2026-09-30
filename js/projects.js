@@ -7,6 +7,7 @@
 
 import { AnimatedContent, SpotlightCard, TiltedCard } from './reactbits/index.js';
 import { restoreTheme, setupThemeToggle } from './theme.js';
+import { setupMobileNav } from './navmenu.js';
 
 restoreTheme();
 
@@ -37,3 +38,4 @@ for (const el of document.querySelectorAll('[data-tilt]')) {
 }
 
 setupThemeToggle(document.getElementById('theme-toggle'));
+setupMobileNav(document.querySelector('header.nav'), document.getElementById('nav-toggle'));

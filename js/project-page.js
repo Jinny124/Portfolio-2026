@@ -10,6 +10,7 @@
 import { AnimatedContent } from './reactbits/index.js';
 import Lightbox from './lightbox.js';
 import { restoreTheme, setupThemeToggle } from './theme.js';
+import { setupMobileNav } from './navmenu.js';
 
 restoreTheme();
 
@@ -57,3 +58,4 @@ for (const tabs of document.querySelectorAll('.pd-flow-tabs')) {
 }
 
 setupThemeToggle(document.getElementById('theme-toggle'));
+setupMobileNav(document.querySelector('header.nav'), document.getElementById('nav-toggle'));

@@ -16,6 +16,7 @@ import {
 
 import Lightbox from './lightbox.js';
 import { currentPalette, restoreTheme, setupThemeToggle } from './theme.js';
+import { setupMobileNav } from './navmenu.js';
 
 restoreTheme();
 
@@ -127,6 +128,8 @@ if (spot && !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
 setupThemeToggle(document.getElementById('theme-toggle'), (palette) => {
   themed.forEach((instance) => instance.setColors(palette.gradient));
 });
+
+setupMobileNav(document.querySelector('header.nav'), document.getElementById('nav-toggle'));
 
 /* ---------------- navigasi dalam halaman tanpa # di alamat ---------------- */
 
