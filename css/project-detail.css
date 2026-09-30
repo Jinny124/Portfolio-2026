@@ -295,15 +295,19 @@
     grid-column: 2;
   }
 
+  .pd-stats-icons dd {
+    font-weight: 600;
+  }
+
   .pd-stats-icons .pd-stat-main {
     display: block;
-    font-weight: 600;
   }
 
   .pd-stats-icons .pd-stat-sub {
     display: block;
     margin-top: 1px;
     font-size: 12.5px;
+    font-weight: 400;
     color: var(--text-muted);
   }
 
